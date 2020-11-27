@@ -558,7 +558,7 @@
   left: 20%;
   top: -4.5%;
   transform: translate(20%, -4.5%);
-  animation: infinite 3s ease check;
+  animation: infinite alternate 2s ease check;
 }
 
 .darken .privilege__text {
@@ -940,11 +940,8 @@
     0% {
       transform: translate3d(-5%, -2%, 0);
     }
-    50% {
-      transform: translate3d(5%, 2%, 0);
-    }
     100% {
-      transform: translate3d(-5%, -2%, 0);
+      transform: translate3d(5%, 2%, 0);
     }
   }
 }
