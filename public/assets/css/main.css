@@ -755,6 +755,10 @@
     right: 45%;
     bottom: 18%;
   }
+  .darken .privilege .privileges .check-card {
+    left: 0;
+    top: 0;
+  }
 }
 
 @keyframes terminal {
