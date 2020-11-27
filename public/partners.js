@@ -35,7 +35,7 @@ function basketAnimation() {
     anime({
       targets: '.basket-bag-big',
       opacity: [0, 1],
-      translateY: ['-100%', '-20%'],
+      translateY: ['-100%', '-17%'],
       easing: 'easeOutQuart',
       delay: 300
     })
@@ -43,7 +43,7 @@ function basketAnimation() {
     anime({
       targets: '.basket-bag-middle',
       opacity: [0, 1],
-      translateY: ['-150%', '-20%'],
+      translateY: ['-150%', '-17%'],
       easing: 'easeOutQuart',
       delay: 200
     })
@@ -51,7 +51,7 @@ function basketAnimation() {
     anime({
       targets: '.basket-bag-top',
       opacity: [0, 1],
-      translateY: ['-150%', '-20%'],
+      translateY: ['-150%', '-17%'],
       easing: 'easeOutQuart',
       delay: 200
     })
