@@ -1,3 +1,5 @@
+var flag = true;
+
 window.onload = () => {
   $('.second').marquee({
     duration: 15000,
@@ -12,43 +14,86 @@ window.onload = () => {
   })
 }
 
-function basketAnimation(show) {
-  if (show) {
-    $('.basket-front').transition({
-      x: '0',
-      y: '0',
-      opacity: 1,
-      duration: 700,
+function basketAnimation() {
+  if (flag) {
+    anime({
+      targets: '.basket-front',
+      opacity: [0, 1],
+      translateX: ['-60%','0%'],
+      translateY: ['-38%', '0%'],
+      easing: 'spring(1, 40, 10, 0)'
     })
 
-    $('.basket-back').transition({
-      x: '0',
-      y: '0',
-      opacity: 1,
-      duration: 700,
+    anime({
+      targets: '.basket-back',
+      opacity: [0, 1],
+      translateX: ['-60%', '0%'],
+      translateY: ['-38%', '0%'],
+      easing: 'spring(1, 40, 10, 0)'
     })
 
-    $('.basket-bag-big').transition({
-      y: '0',
-      opacity: 1,
-      duration: 1000,
-      delay: 200,
+    anime({
+      targets: '.basket-bag-big',
+      opacity: [0, 1],
+      translateY: ['-100%', '0%'],
+      easing: 'easeOutQuart',
+      delay: 300
     })
 
-    $('.basket-bag-middle').transition({
-      y: '0',
-      opacity: 1,
-      duration: 700,
-      delay: 300,
+    anime({
+      targets: '.basket-bag-middle',
+      opacity: [0, 1],
+      translateY: ['-150%', '0%'],
+      easing: 'easeOutQuart',
+      delay: 200
     })
 
-    $('.basket-bag-top').transition({
-      y: '0',
-      opacity: 1,
-      duration: 500,
-      delay: 200,
+    anime({
+      targets: '.basket-bag-top',
+      opacity: [0, 1],
+      translateY: ['-150%', '0%'],
+      easing: 'easeOutQuart',
+      delay: 200
     })
+    
+    flag = false
   }
+  // if (show) {
+  //   $('.basket-front').transition({
+  //     x: '0',
+  //     y: '0',
+  //     opacity: 1,
+  //     duration: 700,
+  //   })
+
+  //   $('.basket-back').transition({
+  //     x: '0',
+  //     y: '0',
+  //     opacity: 1,
+  //     duration: 700,
+  //   })
+
+  //   $('.basket-bag-big').transition({
+  //     y: '0',
+  //     opacity: 1,
+  //     duration: 1000,
+  //     delay: 200,
+  //   })
+
+  //   $('.basket-bag-middle').transition({
+  //     y: '0',
+  //     opacity: 1,
+  //     duration: 700,
+  //     delay: 300,
+  //   })
+
+  //   $('.basket-bag-top').transition({
+  //     y: '0',
+  //     opacity: 1,
+  //     duration: 500,
+  //     delay: 200,
+  //   })
+  // }
 }
 
 function smilesAnimation(show) {
@@ -89,8 +134,8 @@ $(window).scroll(function () {
       $('.basket-front').closest('div').offset().top - 250 &&
     $(this).scrollTop() < $('.basket-front').closest('div').offset().top + 500
   ) {
-    basketAnimation(true)
-  }
+    basketAnimation()
+  } 
 })
 
 $(document).ready(() => {
