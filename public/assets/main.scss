@@ -11,6 +11,7 @@
 @import 'elastic-slider';
 @import 'modals';
 @import 'menu';
+@import 'text';
 
 * {
   margin: 0;
@@ -39,14 +40,6 @@ h1 {
 
 h2 {
   font-size: 36px;
-}
-
-.darken {
-  // background-color: $color-darken;
-}
-
-.white {
-  // background-color: $color-white;
 }
 
 .container {

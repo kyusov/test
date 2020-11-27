@@ -1,0 +1,23 @@
+.text {
+    position: fixed;
+    z-index: 500;
+    color: #fefefe;
+    font-size: 14px;
+    font-weight: 500;
+    top: 35%;
+    right: 0;
+    pointer-events: none;
+    transform: translateX(37%) rotate(90deg);
+}
+
+.text-dark {
+    position: fixed;
+    z-index: 500;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    top: 35%;
+    left: 0;
+    pointer-events: none;
+    transform: translateX(-37%) rotate(-90deg);
+}

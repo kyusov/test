@@ -1,4 +1,4 @@
-var flag = true;
+var flag = true
 
 window.onload = () => {
   $('.second').marquee({
@@ -8,62 +8,124 @@ window.onload = () => {
   })
 
   anime({
-    targets: ['.darken .header', '.darken .marquee', '.darken .offer', '.darken .offer', '.darken .privilege', '.darken .promo', '.darken .partners', '.darken .contacts'],
+    targets: [
+      '.darken .header',
+      '.darken .marquee',
+      '.darken .offer',
+      '.darken .offer',
+      '.darken .privilege',
+      '.darken .promo',
+      '.darken .partners',
+      '.darken .contacts',
+    ],
     opacity: [0, 1],
-    easing: 'easeInQuad'
+    easing: 'easeInQuad',
   })
-}
 
-function basketAnimation() {
-  if (flag) {
-    anime({
-      targets: '.basket-front',
-      opacity: [0, 1],
-      translateX: ['-60%','0%'],
-      translateY: ['-38%', '0%'],
-      easing: 'spring(1, 40, 10, 0)'
-    })
-
-    anime({
-      targets: '.basket-back',
-      opacity: [0, 1],
-      translateX: ['-60%', '0%'],
-      translateY: ['-38%', '8.5%'],
-      easing: 'spring(1, 40, 10, 0)'
-    })
-
-    anime({
-      targets: '.basket-bag-big',
-      opacity: [0, 1],
-      translateY: ['-100%', '-17%'],
-      easing: 'easeOutQuart',
-      delay: 300
-    })
-
-    anime({
-      targets: '.basket-bag-middle',
-      opacity: [0, 1],
-      translateY: ['-150%', '-17%'],
-      easing: 'easeOutQuart',
-      delay: 200
-    })
-
-    anime({
-      targets: '.basket-bag-top',
-      opacity: [0, 1],
-      translateY: ['-150%', '-17%'],
-      easing: 'easeOutQuart',
-      delay: 200
-    })
-
+  if (window.innerWidth < 480) {
     anime({
       targets: '.check-card',
       translateX: ['-5%', '5%'],
       translateY: ['-2%', '2%'],
       easing: 'easeInQuad',
       direction: 'alternate',
-      loop: true
+      loop: true,
     })
+  } else {
+    anime({
+      targets: '.check-card',
+      translateX: ['-5%', '5%'],
+      translateY: ['-2%', '2%'],
+      easing: 'easeInQuad',
+      direction: 'alternate',
+      loop: true,
+    })
+  }
+}
+
+function basketAnimation() {
+  if (flag) {
+    if (window.innerWidth < 480) {
+      anime({
+        targets: '.basket-front',
+        opacity: [0, 1],
+        translateX: ['-60%', '0%'],
+        translateY: ['-38%', '0%'],
+        easing: 'spring(1, 40, 10, 0)',
+      })
+
+      anime({
+        targets: '.basket-back',
+        opacity: [0, 1],
+        translateX: ['-60%', '0%'],
+        translateY: ['-38%', '8.5%'],
+        easing: 'spring(1, 40, 10, 0)',
+      })
+
+      anime({
+        targets: '.basket-bag-big',
+        opacity: [0, 1],
+        translateY: ['-100%', '-17%'],
+        easing: 'easeOutQuart',
+        delay: 300,
+      })
+
+      anime({
+        targets: '.basket-bag-middle',
+        opacity: [0, 1],
+        translateY: ['-150%', '-17%'],
+        easing: 'easeOutQuart',
+        delay: 200,
+      })
+
+      anime({
+        targets: '.basket-bag-top',
+        opacity: [0, 1],
+        translateY: ['-150%', '-17%'],
+        easing: 'easeOutQuart',
+        delay: 200,
+      })
+    } else {
+      anime({
+        targets: '.basket-front',
+        opacity: [0, 1],
+        translateX: ['-60%', '0%'],
+        translateY: ['-38%', '0%'],
+        easing: 'spring(1, 40, 10, 0)',
+      })
+
+      anime({
+        targets: '.basket-back',
+        opacity: [0, 1],
+        translateX: ['-60%', '0%'],
+        translateY: ['-38%', '0%'],
+        easing: 'spring(1, 40, 10, 0)',
+      })
+
+      anime({
+        targets: '.basket-bag-big',
+        opacity: [0, 1],
+        translateY: ['-100%', '0%'],
+        easing: 'easeOutQuart',
+        delay: 300,
+      })
+
+      anime({
+        targets: '.basket-bag-middle',
+        opacity: [0, 1],
+        translateY: ['-150%', '0%'],
+        easing: 'easeOutQuart',
+        delay: 200,
+      })
+
+      anime({
+        targets: '.basket-bag-top',
+        opacity: [0, 1],
+        translateY: ['-150%', '0%'],
+        easing: 'easeOutQuart',
+        delay: 200,
+      })
+    }
 
     flag = false
   }
@@ -144,7 +206,7 @@ $(window).scroll(function () {
     $(this).scrollTop() < $('.basket-front').closest('div').offset().top + 500
   ) {
     basketAnimation()
-  } 
+  }
 })
 
 $(document).ready(() => {

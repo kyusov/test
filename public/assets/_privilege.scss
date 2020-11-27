@@ -384,21 +384,25 @@
         .card-terminal {
           bottom: 24%;
           right: 6%;
+          width: 30%;
         }
 
         .terminal-shadow {
           bottom: 14%;
           right: 5%;
+          width: 30%;
         }
 
         .one-money {
           left: 17%;
           top: 44%;
+          width: 6%;
         }
 
         .two-money {
           left: 6.4%;
           bottom: 12.4%;
+          width: 6%;
         }
 
         .fire {
@@ -414,6 +418,7 @@
 
       &__picture {
         margin: 0;
+        width: 55%;
         &:nth-child(1) {
           margin: 0;
         }

@@ -598,18 +598,22 @@
   .privilege .privileges__item .card-terminal {
     bottom: 24%;
     right: 6%;
+    width: 30%;
   }
   .privilege .privileges__item .terminal-shadow {
     bottom: 14%;
     right: 5%;
+    width: 30%;
   }
   .privilege .privileges__item .one-money {
     left: 17%;
     top: 44%;
+    width: 6%;
   }
   .privilege .privileges__item .two-money {
     left: 6.4%;
     bottom: 12.4%;
+    width: 6%;
   }
   .privilege .privileges__item .fire {
     left: -8%;
@@ -621,6 +625,7 @@
   }
   .privilege .privileges__picture {
     margin: 0;
+    width: 55%;
   }
   .privilege .privileges__picture:nth-child(1) {
     margin: 0;
@@ -2448,6 +2453,30 @@
     font-size: 24px;
     line-height: 28px;
   }
+}
+
+.text {
+  position: fixed;
+  z-index: 500;
+  color: #fefefe;
+  font-size: 14px;
+  font-weight: 500;
+  top: 35%;
+  right: 0;
+  pointer-events: none;
+  transform: translateX(37%) rotate(90deg);
+}
+
+.text-dark {
+  position: fixed;
+  z-index: 500;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  top: 35%;
+  left: 0;
+  pointer-events: none;
+  transform: translateX(-37%) rotate(-90deg);
 }
 
 * {

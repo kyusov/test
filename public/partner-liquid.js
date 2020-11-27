@@ -5,17 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
     '.svg-slider-left > defs > clipPath > path'
   )
 
-  const width = 20
+  const width = 40
   const height = svgLeft.clientHeight + 100
 
-  const offset = 10
+  const offset = 40
   const pip = -40
 
-  var shiftX;
-  var shiftY;
-  var widthInner;
+  var shiftX
+  var shiftY
+  var widthInner
 
   if (window.innerWidth < 768) {
+    $('.text-dark').css('display', 'none')
+    let width = 20
+    let offset = 10
     pathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
     clipPathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
 
@@ -23,8 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
       targets: pathLeft,
       d: [
         {
-          value: [getPath(width, height, offset, 0, false, 0),getPath(width, height, offset, pip, true, 0)]
-        }
+          value: [
+            getPath(width, height, offset, 0, false, 0),
+            getPath(width, height, offset, pip, true, 0),
+          ],
+        },
       ],
       easing: 'easeInQuad',
     })
@@ -51,7 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       widthInner = 20
 
-      pathLeft.setAttribute('d', getPath(widthInner, height, offset, 0, false, 0))
+      pathLeft.setAttribute(
+        'd',
+        getPath(widthInner, height, offset, 0, false, 0)
+      )
     }
 
     function moveAt(pageX, pageY) {
@@ -61,7 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
       svgLeft.style.width = x + 20 + 'px'
       widthInner = 20
 
-      pathLeft.setAttribute('d', getPath(widthInner, height, offset, -x, true, y))
+      pathLeft.setAttribute(
+        'd',
+        getPath(widthInner, height, offset, -x, true, y)
+      )
 
       if (x >= window.innerWidth - window.innerWidth / 4) {
         svgLeft.style.width = '100%'
@@ -119,13 +131,14 @@ document.addEventListener('DOMContentLoaded', () => {
     svgLeft.addEventListener('touchmove', touchMove)
 
     svgLeft.addEventListener('touchstart', touchStart)
-    svgLeft.addEventListener('touchend', touchEnd) 
+    svgLeft.addEventListener('touchend', touchEnd)
   } else {
     pathLeft.setAttribute('d', getPath(width, height, offset, 0, false, 0))
 
     clipPathLeft.setAttribute('d', getPath(width, height, offset, 0, false, 0))
 
     const mouseLeave = () => {
+      $('.text-dark').css('left', '0')
       anime({
         targets: [pathLeft, clipPathLeft],
         d: [
@@ -141,6 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const mouseEnter = () => {
+      $('.text-dark').css('left', '100%')
+      let width = 20
+      let offset = 10
       anime({
         targets: [pathLeft, clipPathLeft],
         d: [
