@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // для больших экранов
       if (x >= window.innerWidth / 4) {
-          console.log('HOW????')
         svgLeft.style.width = '100%'
         document.removeEventListener('mousemove', onMouseMove)
         svgLeft.onmouseup = null
@@ -112,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   true,
                   y
                 ),
-                getPath(svgLeft.clientWidth - 10, height, svgLeft.clientWidth, 0, false, 0),
+                getPath(svgLeft.clientWidth, height, svgLeft.clientWidth, 0, false, 0),
               ],
             },
           ],

@@ -6,6 +6,7 @@ $menu-btn-height: 64px;
   position: fixed;
   z-index: 500;
   top: 0;
+  opacity: 0;
 
   &__wrapper {
     width: 100%;

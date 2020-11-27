@@ -9,6 +9,12 @@ window.onload = () => {
     startVisible: true,
     duplicated: true,
   })
+  
+  anime({
+    targets: ['.header', '.marquee', '.offer', '.offer', '.privilege', '.promo', '.partners', '.contacts'],
+    opacity: [0, 1],
+    easing: 'easeInQuad'
+  })
 }
 
 function cardAnimation(show) {
@@ -82,7 +88,7 @@ $(window).scroll(function () {
   }
 })
 
-$(document).ready(() => { 
+$(document).ready(() => {
 
   $('.header__menu-btn').on('click', (e) => {
     if (!lightTheme) {

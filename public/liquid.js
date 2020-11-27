@@ -1,13 +1,10 @@
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
   const svgRight = document.querySelector('.svg-slider-right')
   const pathRight = document.querySelector('.svg-slider-right > path')
 
   const clipPathRight = document.querySelector(
     '.svg-slider-right > defs > clipPath > path'
   )
-
-  //скрываем левую svg
-  // svgLeft.style.display = 'none'
 
   const width = svgRight.clientWidth - 20
   const height = svgRight.clientHeight
@@ -60,20 +57,17 @@ window.onload = () => {
           getPath(widthInner, height, offset, Math.abs(x), true, y)
         )
 
-        if (Math.abs(x) >= window.innerWidth / 2) {
+        if (Math.abs(x) >= window.innerWidth - window.innerWidth / 4) {
           svgRight.style.width = '100%'
-          // document.removeEventListener('mousemove', onMouseMove)
-          // document.removeEventListener('touchmove', onMouseMove)
+
           svgRight.removeEventListener('touchstart', touchStart)
           svgRight.removeEventListener('touchend', touchEnd)
           document.removeEventListener('touchmove', touchMove)
+
           pathRight.setAttribute(
             'd',
             getPath(svgRight.clientWidth, height, offset, Math.abs(x), true, y)
           )
-
-          // pathRight.removeEventListener('mousedown', mouseDown)
-          // pathRight.removeEventListener('touchstart', mouseDown)
 
           anime({
             targets: [
@@ -102,7 +96,7 @@ window.onload = () => {
                     true,
                     y
                   ),
-                  getPath(10, height, svgRight.clientWidth, 0, false, 0),
+                  getPath(0, height, svgRight.clientWidth, 0, false, 0),
                 ],
               },
             ],
@@ -120,13 +114,10 @@ window.onload = () => {
       }
 
       document.addEventListener('touchmove', touchMove)
-      //
-
     }
 
     svgRight.addEventListener('touchstart', touchStart)
     svgRight.addEventListener('touchend', touchEnd)
-
 
   } else {
     pathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
@@ -146,7 +137,6 @@ window.onload = () => {
       })
       svgRight.style.width = '50px'
       pathRight.removeEventListener('mousedown', mouseDown)
-      // pathRight.removeEventListener('touchstart', mouseDown)
     }
 
     const mouseEnter = () => {
@@ -167,8 +157,6 @@ window.onload = () => {
     const mouseDown = function (e) {
       svgRight.removeEventListener('mouseleave', mouseLeave)
       svgRight.removeEventListener('mouseenter', mouseEnter)
-      // svgRight.removeEventListener('touchleave', mouseLeave)
-      // svgRight.removeEventListener('touchenter', mouseEnter)
 
       let shiftX = e.clientX + pip + 50
       let shiftY = e.clientY + 60
@@ -197,7 +185,6 @@ window.onload = () => {
         if (Math.abs(x) >= window.innerWidth / 4) {
           svgRight.style.width = '100%'
           document.removeEventListener('mousemove', onMouseMove)
-          // document.removeEventListener('touchmove', onMouseMove)
           svgRight.onmouseup = null
           svgRight.ontouchend = null
 
@@ -207,7 +194,6 @@ window.onload = () => {
           )
 
           pathRight.removeEventListener('mousedown', mouseDown)
-          // pathRight.removeEventListener('touchstart', mouseDown)
 
           anime({
             targets: [
@@ -236,7 +222,7 @@ window.onload = () => {
                     true,
                     y
                   ),
-                  getPath(5, height, svgRight.clientWidth - 5, 0, false, 0),
+                  getPath(0, height, svgRight.clientWidth, 0, false, 0),
                 ],
               },
             ],
@@ -289,7 +275,7 @@ window.onload = () => {
       return false
     })
   }
-}
+})
 
 function getPath(w, h, offset, pip = 0, resize = false, y = 0) {
   return `
