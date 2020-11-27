@@ -1820,7 +1820,8 @@
   position: absolute;
   width: 30%;
   height: 40%;
-  max-height: 520px;
+  min-height: 520px;
+  max-height: 600px;
   top: 50%;
   left: 50%;
   background-color: #fff;
@@ -1838,9 +1839,24 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .modal__wrapper {
+    width: 80%;
+    padding: 32px;
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__wrapper {
+    padding: 25px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .modal__wrapper {
     width: 90%;
+    min-height: 300px;
     padding: 20px;
   }
 }
@@ -1849,7 +1865,8 @@
   position: absolute;
   width: 30%;
   height: 40%;
-  max-height: 520px;
+  min-height: 520px;
+  max-height: 600px;
   top: 50%;
   left: 50%;
   background-color: #FDC300;
@@ -1866,9 +1883,17 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .modal__back {
+    width: 80%;
+    min-height: 400px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .modal__back {
     width: 90%;
+    min-height: 300px;
   }
 }
 
@@ -1909,10 +1934,38 @@
   transform: translate3d(-50%, -50%, 0) rotate(-45deg);
 }
 
+@media screen and (max-width: 425px) {
+  .modal__close span {
+    width: 20px;
+    height: 3px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__close span {
+    width: 18px;
+    height: 2px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .modal__close span {
     width: 16px;
     height: 2px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .modal__close {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__close {
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -1928,6 +1981,20 @@
   font-weight: 900;
   line-height: 38px;
   color: #333;
+}
+
+@media screen and (max-width: 425px) {
+  .modal__title {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__title {
+    font-size: 18px;
+    line-height: 21px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -2002,6 +2069,32 @@
   background-image: url("../pictures/check.svg");
 }
 
+@media screen and (max-width: 425px) {
+  .modal__form input {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .modal__form input:not(:first-child) {
+    margin-top: 22px;
+  }
+  .modal__form label {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__form input {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .modal__form input:not(:first-child) {
+    margin-top: 20px;
+  }
+  .modal__form label {
+    font-size: 12px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .modal__form input {
     font-size: 16px;
@@ -2064,12 +2157,36 @@
   content: none;
 }
 
+@media screen and (max-width: 425px) {
+  .modal__button-wrapper button[type='submit'] {
+    font-size: 24px;
+    line-height: 28px;
+    padding: 20px 48px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__button-wrapper button[type='submit'] {
+    font-size: 18px;
+    line-height: 21px;
+    padding: 14px 45px;
+  }
+  .modal__button-wrapper button[type='submit']::before {
+    top: 4px;
+    left: 2px;
+  }
+  .modal__button-wrapper button[type='submit']:active {
+    transform: translate(4px, 6px);
+    -webkit-transform: translate(4px, 6px);
+  }
+}
+
 @media screen and (max-width: 320px) {
   .modal__button-wrapper button[type='submit'] {
     font-size: 16px;
     line-height: 19px;
     padding: 11px 42px;
-    width: 100%;
   }
   .modal__button-wrapper button[type='submit']::before {
     top: 3px;
@@ -2078,9 +2195,6 @@
   .modal__button-wrapper button[type='submit']:active {
     transform: translate(3px, 5px);
     -webkit-transform: translate(3px, 5px);
-  }
-  .modal__button-wrapper button[type='submit']:active::before {
-    content: none;
   }
 }
 
@@ -2183,6 +2297,17 @@
 
 .menu__close span:last-child {
   transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+@media screen and (max-width: 425px) {
+  .menu__close {
+    width: 32px;
+    height: 32px;
+  }
+  .menu__close span {
+    width: 16px;
+    height: 2px;
+  }
 }
 
 .menu__title {

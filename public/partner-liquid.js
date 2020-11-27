@@ -11,151 +11,264 @@ document.addEventListener('DOMContentLoaded', () => {
   const offset = 10
   const pip = -40
 
-  pathLeft.setAttribute('d', getPath(width, height, offset, 0, false, 0))
+  if (window.innerWidth < 768) {
+    pathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
+    clipPathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
 
-  clipPathLeft.setAttribute('d', getPath(width, height, offset, 0, false, 0))
-
-  const mouseLeave = () => {
     anime({
-      targets: [pathLeft, clipPathLeft],
+      targets: pathLeft,
       d: [
         {
-          value: getPath(width, height, offset, 0, false, 0),
-        },
+          value: [getPath(width, height, offset, 0, false, 0),getPath(width, height, offset, pip, true, 0)]
+        }
       ],
-      duration: 400,
       easing: 'easeInQuad',
     })
-    svgLeft.style.width = '50px'
-    pathLeft.removeEventListener('mousedown', mouseDown)
-  }
 
-  const mouseEnter = () => {
-    anime({
-      targets: [pathLeft, clipPathLeft],
-      d: [
-        {
-          value: getPath(width, height, offset, pip, true, 0),
-        },
-      ],
-      duration: 400,
-      easing: 'easeInQuad',
-    })
-    pathLeft.addEventListener('mousedown', mouseDown)
-  }
+    const touchEnd = (e) => {
+      e.preventDefault()
+      anime({
+        targets: [pathLeft, clipPathLeft],
+        d: [
+          {
+            value: getPath(width, height, offset, pip, true, 0),
+          },
+        ],
+        duration: 0,
+        easing: 'easeInQuad',
+      })
+      svgLeft.style.width = '50px'
+    }
 
-  const mouseDown = function (e) {
-    svgLeft.removeEventListener('mouseleave', mouseLeave)
-    svgLeft.removeEventListener('mouseenter', mouseEnter)
+    const touchStart = (e) => {
+      e.preventDefault()
+      let shiftX = e.targetTouches[0].clientX + pip
+      let shiftY = e.targetTouches[0].clientY + 60
 
-    let shiftX = e.clientX + pip 
-    let shiftY = e.clientY + 60
-
-    console.log(shiftX, shiftY)
-
-    let widthInner = 20
-
-    pathLeft.setAttribute('d', getPath(widthInner, height, offset, 0, false, 0))
-
-    moveAt(e.screenX, e.screenY)
-
-    function moveAt(pageX, pageY) {
-      const x = pageX - shiftX
-      const y = pageY - shiftY
-
-      svgLeft.style.width = x + 20 + 'px'
-      widthInner = 20
+      let widthInner = 20
 
       pathLeft.setAttribute(
         'd',
-        getPath(widthInner, height, offset, -x, true, y)
+        getPath(widthInner, height, offset, 0, false, 0)
       )
 
-      // для больших экранов
-      if (x >= window.innerWidth / 4) {
-        svgLeft.style.width = '100%'
-        document.removeEventListener('mousemove', onMouseMove)
-        svgLeft.onmouseup = null
+      moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
+
+      function moveAt(pageX, pageY) {
+        const x = pageX - shiftX
+        const y = pageY - shiftY
+
+        svgLeft.style.width = x + 20 + 'px'
+        widthInner = 20
 
         pathLeft.setAttribute(
           'd',
-          getPath(0, height, offset, -x, true, y)
+          getPath(widthInner, height, offset, -x, true, y)
         )
 
-        pathLeft.removeEventListener('mousedown', mouseDown)
+        if (x >= window.innerWidth - window.innerWidth / 4) {
+          svgLeft.style.width = '100%'
 
-        anime({
-          targets: [
-            '.darken .header',
-            '.darken .marquee',
-            '.darken .offer',
-            '.darken .privilege',
-            '.darken .promo',
-            '.darken .partners',
-            '.darken .contacts',
-          ],
-          opacity: [1, 0],
-          easing: 'easeInQuad',
-        })
+          svgLeft.removeEventListener('touchstart', touchStart)
+          svgLeft.removeEventListener('touchend', touchEnd)
+          document.removeEventListener('touchmove', touchMove)
 
-        anime({
-          targets: pathLeft,
-          d: [
-            {
-              value: [
-                getPath(
-                  0,
-                  height,
-                  offset,
-                  -x,
-                  true,
-                  y
-                ),
-                getPath(svgLeft.clientWidth, height, svgLeft.clientWidth, 0, false, 0),
-              ],
+          pathLeft.setAttribute('d',getPath(0, height, offset, -x, true, y))
+
+          anime({
+            targets: [
+              '.darken .header',
+              '.darken .marquee',
+              '.darken .offer',
+              '.darken .privilege',
+              '.darken .promo',
+              '.darken .partners',
+              '.darken .contacts',
+            ],
+            opacity: [1, 0],
+            easing: 'easeInQuad',
+          })
+
+          anime({
+            targets: pathLeft,
+            d: [
+              {
+                value: [
+                  getPath(0, height, offset, -x, true, y),
+                  getPath(
+                    svgLeft.clientWidth,
+                    height,
+                    svgLeft.clientWidth,
+                    0,
+                    false,
+                    0
+                  ),
+                ],
+              },
+            ],
+            easing: 'spring(1, 30, 10, 0)',
+            duration: 2000,
+            complete: () => {
+              window.location.href = '/'
             },
-          ],
-          easing: 'spring(1, 30, 10, 0)',
-          duration: 2000,
-          complete: () => {
-            window.location.href = '/'
-          },
-        })
+          })
+        }
       }
+
+      function touchMove(e) {
+        moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
+      }
+
+      document.addEventListener('touchmove', touchMove)
     }
 
-    function onMouseMove(e) {
-      moveAt(e.screenX, e.screenY)
-    }
+    svgLeft.addEventListener('touchstart', touchStart)
+    svgLeft.addEventListener('touchend', touchEnd) 
+  } else {
+    pathLeft.setAttribute('d', getPath(width, height, offset, 0, false, 0))
 
-    document.addEventListener('mousemove', onMouseMove)
+    clipPathLeft.setAttribute('d', getPath(width, height, offset, 0, false, 0))
 
-    svgLeft.onmouseup = function () {
-      document.removeEventListener('mousemove', onMouseMove)
-
+    const mouseLeave = () => {
       anime({
-        targets: pathLeft,
+        targets: [pathLeft, clipPathLeft],
         d: [
           {
             value: getPath(width, height, offset, 0, false, 0),
           },
         ],
+        duration: 400,
+        easing: 'easeInQuad',
       })
-
       svgLeft.style.width = '50px'
-      svgLeft.addEventListener('mouseleave', mouseLeave)
-      svgLeft.addEventListener('mouseenter', mouseEnter)
-
-      svgLeft.onmouseup = null
+      pathLeft.removeEventListener('mousedown', mouseDown)
     }
+
+    const mouseEnter = () => {
+      anime({
+        targets: [pathLeft, clipPathLeft],
+        d: [
+          {
+            value: getPath(width, height, offset, pip, true, 0),
+          },
+        ],
+        duration: 400,
+        easing: 'easeInQuad',
+      })
+      pathLeft.addEventListener('mousedown', mouseDown)
+    }
+
+    const mouseDown = function (e) {
+      svgLeft.removeEventListener('mouseleave', mouseLeave)
+      svgLeft.removeEventListener('mouseenter', mouseEnter)
+
+      let shiftX = e.clientX + pip
+      let shiftY = e.clientY + 60
+
+      let widthInner = 20
+
+      pathLeft.setAttribute(
+        'd',
+        getPath(widthInner, height, offset, 0, false, 0)
+      )
+
+      moveAt(e.screenX, e.screenY)
+
+      function moveAt(pageX, pageY) {
+        const x = pageX - shiftX
+        const y = pageY - shiftY
+
+        svgLeft.style.width = x + 20 + 'px'
+        widthInner = 20
+
+        pathLeft.setAttribute(
+          'd',
+          getPath(widthInner, height, offset, -x, true, y)
+        )
+
+        // для больших экранов
+        if (x >= window.innerWidth / 4) {
+          svgLeft.style.width = '100%'
+          document.removeEventListener('mousemove', onMouseMove)
+          svgLeft.onmouseup = null
+
+          pathLeft.setAttribute('d', getPath(0, height, offset, -x, true, y))
+
+          pathLeft.removeEventListener('mousedown', mouseDown)
+
+          anime({
+            targets: [
+              '.darken .header',
+              '.darken .marquee',
+              '.darken .offer',
+              '.darken .privilege',
+              '.darken .promo',
+              '.darken .partners',
+              '.darken .contacts',
+            ],
+            opacity: [1, 0],
+            easing: 'easeInQuad',
+          })
+
+          anime({
+            targets: pathLeft,
+            d: [
+              {
+                value: [
+                  getPath(0, height, offset, -x, true, y),
+                  getPath(
+                    svgLeft.clientWidth,
+                    height,
+                    svgLeft.clientWidth,
+                    0,
+                    false,
+                    0
+                  ),
+                ],
+              },
+            ],
+            easing: 'spring(1, 30, 10, 0)',
+            duration: 2000,
+            complete: () => {
+              window.location.href = '/'
+            },
+          })
+        }
+      }
+
+      function onMouseMove(e) {
+        moveAt(e.screenX, e.screenY)
+      }
+
+      document.addEventListener('mousemove', onMouseMove)
+
+      svgLeft.onmouseup = function () {
+        document.removeEventListener('mousemove', onMouseMove)
+
+        anime({
+          targets: pathLeft,
+          d: [
+            {
+              value: getPath(width, height, offset, 0, false, 0),
+            },
+          ],
+        })
+
+        svgLeft.style.width = '50px'
+        svgLeft.addEventListener('mouseleave', mouseLeave)
+        svgLeft.addEventListener('mouseenter', mouseEnter)
+
+        svgLeft.onmouseup = null
+      }
+    }
+
+    svgLeft.addEventListener('mouseenter', mouseEnter)
+    svgLeft.addEventListener('mouseleave', mouseLeave)
+
+    pathLeft.addEventListener('dragstart', () => {
+      return false
+    })
   }
-
-  svgLeft.addEventListener('mouseenter', mouseEnter)
-  svgLeft.addEventListener('mouseleave', mouseLeave)
-
-  pathLeft.addEventListener('dragstart', () => {
-    return false
-  })
 })
 
 function getPath(w, h, offset, pip = 0, resize = false, y = 0) {

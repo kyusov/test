@@ -91,9 +91,15 @@
       }
     }
 
-    // @media screen and (max-width: 1200px) {
-    //     margin-left: 407px;
-    // }
+    @media screen and (max-width: 425px) {
+      width: 32px;
+      height: 32px;
+
+      span {
+        width: 16px;
+        height: 2px;
+      }
+    }
   }
 
   &__title {

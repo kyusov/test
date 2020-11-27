@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
     pathRight.setAttribute('d', getPath(width, height, offset, pip, true, 0))
     clipPathRight.setAttribute('d', getPath(width, height, offset, pip, true, 0))
 
+    anime({
+      targets: pathRight,
+      d: [
+        {
+          value: [getPath(width, height, offset, 0, false, 0),getPath(width, height, offset, pip, true, 0)]
+        }
+      ],
+      easing: 'easeInQuad',
+    })
+
     const touchEnd = (e) => {
       e.preventDefault()
       anime({
