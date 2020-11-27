@@ -555,6 +555,11 @@
 
   .darken {
     .privilege {
+
+      &__img {
+        width: 225px;
+      }
+
       &__header {
         -webkit-text-stroke: 1px #fff;
       }

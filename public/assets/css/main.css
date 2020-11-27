@@ -727,6 +727,9 @@
   .privilege__count span {
     -webkit-text-stroke: 1px #333;
   }
+  .darken .privilege__img {
+    width: 225px;
+  }
   .darken .privilege__header {
     -webkit-text-stroke: 1px #fff;
   }
