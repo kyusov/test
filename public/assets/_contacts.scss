@@ -135,13 +135,27 @@
         transition: all 1s ease;
         z-index: -1;
       }
-      &:hover {
-        cursor: pointer;
+
+      &:after {
+        width: 100%;
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+      }
+
+      @media screen and (min-width: 425px) {
         &:after {
-          width: 100%;
-          transform: translate(0, 0);
+          width: 25%;
+        }
+        &:hover {
+          cursor: pointer;
+          &:after {
+            width: 100%;
+            transform: translate(0, 0);
+            -webkit-transform: translate(0, 0);
+          }
         }
       }
+
       &:before {
         content: '';
         position: absolute;
@@ -262,7 +276,10 @@
       }
 
       button[type='submit'] {
-        color: $color-white;
+        color: $color-text;
+        @media screen and (min-width: 425px) {
+          color: $color-white;
+        }
 
         &:hover {
           color: $color-text;

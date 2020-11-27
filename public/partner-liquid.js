@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const offset = 10
   const pip = -40
 
+  var shiftX;
+  var shiftY;
+  var widthInner;
+
   if (window.innerWidth < 768) {
     pathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
     clipPathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
@@ -42,85 +46,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const touchStart = (e) => {
       e.preventDefault()
-      let shiftX = e.targetTouches[0].clientX + pip
-      let shiftY = e.targetTouches[0].clientY + 60
+      shiftX = e.targetTouches[0].clientX + pip
+      shiftY = e.targetTouches[0].clientY + 60
 
-      let widthInner = 20
+      widthInner = 20
 
-      pathLeft.setAttribute(
-        'd',
-        getPath(widthInner, height, offset, 0, false, 0)
-      )
-
-      moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
-
-      function moveAt(pageX, pageY) {
-        const x = pageX - shiftX
-        const y = pageY - shiftY
-
-        svgLeft.style.width = x + 20 + 'px'
-        widthInner = 20
-
-        pathLeft.setAttribute(
-          'd',
-          getPath(widthInner, height, offset, -x, true, y)
-        )
-
-        if (x >= window.innerWidth - window.innerWidth / 4) {
-          svgLeft.style.width = '100%'
-
-          svgLeft.removeEventListener('touchstart', touchStart)
-          svgLeft.removeEventListener('touchend', touchEnd)
-          document.removeEventListener('touchmove', touchMove)
-
-          pathLeft.setAttribute('d',getPath(0, height, offset, -x, true, y))
-
-          anime({
-            targets: [
-              '.darken .header',
-              '.darken .marquee',
-              '.darken .offer',
-              '.darken .privilege',
-              '.darken .promo',
-              '.darken .partners',
-              '.darken .contacts',
-            ],
-            opacity: [1, 0],
-            easing: 'easeInQuad',
-          })
-
-          anime({
-            targets: pathLeft,
-            d: [
-              {
-                value: [
-                  getPath(0, height, offset, -x, true, y),
-                  getPath(
-                    svgLeft.clientWidth,
-                    height,
-                    svgLeft.clientWidth,
-                    0,
-                    false,
-                    0
-                  ),
-                ],
-              },
-            ],
-            easing: 'spring(1, 30, 10, 0)',
-            duration: 2000,
-            complete: () => {
-              window.location.href = '/'
-            },
-          })
-        }
-      }
-
-      function touchMove(e) {
-        moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
-      }
-
-      document.addEventListener('touchmove', touchMove)
+      pathLeft.setAttribute('d', getPath(widthInner, height, offset, 0, false, 0))
     }
+
+    function moveAt(pageX, pageY) {
+      const x = pageX - shiftX
+      const y = pageY - shiftY
+
+      svgLeft.style.width = x + 20 + 'px'
+      widthInner = 20
+
+      pathLeft.setAttribute('d', getPath(widthInner, height, offset, -x, true, y))
+
+      if (x >= window.innerWidth - window.innerWidth / 4) {
+        svgLeft.style.width = '100%'
+
+        svgLeft.removeEventListener('touchmove', touchMove)
+        svgLeft.removeEventListener('touchstart', touchStart)
+        svgLeft.removeEventListener('touchend', touchEnd)
+
+        pathLeft.setAttribute('d', getPath(0, height, offset, -x, true, y))
+
+        anime({
+          targets: [
+            '.darken .header',
+            '.darken .marquee',
+            '.darken .offer',
+            '.darken .privilege',
+            '.darken .promo',
+            '.darken .partners',
+            '.darken .contacts',
+          ],
+          opacity: [1, 0],
+          easing: 'easeInQuad',
+        })
+
+        anime({
+          targets: pathLeft,
+          d: [
+            {
+              value: [
+                getPath(0, height, offset, -x, true, y),
+                getPath(
+                  svgLeft.clientWidth,
+                  height,
+                  svgLeft.clientWidth,
+                  0,
+                  false,
+                  0
+                ),
+              ],
+            },
+          ],
+          easing: 'spring(1, 30, 10, 0)',
+          duration: 2000,
+          complete: () => {
+            window.location.href = '/'
+          },
+        })
+      }
+    }
+
+    function touchMove(e) {
+      moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
+    }
+
+    svgLeft.addEventListener('touchmove', touchMove)
 
     svgLeft.addEventListener('touchstart', touchStart)
     svgLeft.addEventListener('touchend', touchEnd) 

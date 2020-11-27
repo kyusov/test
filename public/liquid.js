@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const offset = 10
   const pip = 40
 
+  var shiftX;
+  var shiftY;
+  var widthInner;
+
   if (window.innerWidth < 768) {
     pathRight.setAttribute('d', getPath(width, height, offset, pip, true, 0))
     clipPathRight.setAttribute('d', getPath(width, height, offset, pip, true, 0))
@@ -42,88 +46,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const touchStart = (e) => {
       e.preventDefault()
-      let shiftX = e.targetTouches[0].clientX + pip + 50
-      let shiftY = e.targetTouches[0].clientY + 60
+      shiftX = e.targetTouches[0].clientX + pip + 50
+      shiftY = e.targetTouches[0].clientY + 60
 
-      let widthInner = svgRight.clientWidth - 20
+      widthInner = svgRight.clientWidth - 20
 
-      pathRight.setAttribute(
-        'd',
-        getPath(widthInner, height, offset, 0, false, 0)
-      )
+      pathRight.setAttribute('d', getPath(widthInner, height, offset, 0, false, 0))
+    }
 
-      moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
+    function moveAt(pageX, pageY) {
+      const x = pageX - shiftX
+      const y = pageY - shiftY
 
-      function moveAt(pageX, pageY) {
-        const x = pageX - shiftX
-        const y = pageY - shiftY
+      svgRight.style.width = Math.abs(x) + 20 + 'px'
+      widthInner = svgRight.clientWidth - 20
 
-        svgRight.style.width = Math.abs(x) + 20 + 'px'
-        widthInner = svgRight.clientWidth - 20
+      pathRight.setAttribute('d', getPath(widthInner, height, offset, Math.abs(x), true, y))
+
+      if (Math.abs(x) >= window.innerWidth - window.innerWidth / 4) {
+        svgRight.style.width = '100%'
+
+        svgRight.removeEventListener('touchmove', touchMove)
+        svgRight.removeEventListener('touchstart', touchStart)
+        svgRight.removeEventListener('touchend', touchEnd)
 
         pathRight.setAttribute(
           'd',
-          getPath(widthInner, height, offset, Math.abs(x), true, y)
+          getPath(svgRight.clientWidth, height, offset, Math.abs(x), true, y)
         )
 
-        if (Math.abs(x) >= window.innerWidth - window.innerWidth / 4) {
-          svgRight.style.width = '100%'
+        anime({
+          targets: [
+            '.white .header',
+            '.white .marquee',
+            '.white .offer',
+            '.white .privilege',
+            '.white .promo',
+            '.white .partners',
+            '.white .contacts',
+          ],
+          opacity: [1, 0],
+          easing: 'easeInQuad',
+        })
 
-          svgRight.removeEventListener('touchstart', touchStart)
-          svgRight.removeEventListener('touchend', touchEnd)
-          document.removeEventListener('touchmove', touchMove)
-
-          pathRight.setAttribute(
-            'd',
-            getPath(svgRight.clientWidth, height, offset, Math.abs(x), true, y)
-          )
-
-          anime({
-            targets: [
-              '.white .header',
-              '.white .marquee',
-              '.white .offer',
-              '.white .privilege',
-              '.white .promo',
-              '.white .partners',
-              '.white .contacts',
-            ],
-            opacity: [1, 0],
-            easing: 'easeInQuad',
-          })
-
-          anime({
-            targets: pathRight,
-            d: [
-              {
-                value: [
-                  getPath(
-                    svgRight.clientWidth,
-                    height,
-                    offset,
-                    Math.abs(x),
-                    true,
-                    y
-                  ),
-                  getPath(0, height, svgRight.clientWidth, 0, false, 0),
-                ],
-              },
-            ],
-            easing: 'spring(1, 30, 10, 0)',
-            duration: 2000,
-            complete: () => {
-              window.location.href = '/partners'
+        anime({
+          targets: pathRight,
+          d: [
+            {
+              value: [
+                getPath(
+                  svgRight.clientWidth,
+                  height,
+                  offset,
+                  Math.abs(x),
+                  true,
+                  y
+                ),
+                getPath(0, height, svgRight.clientWidth, 0, false, 0),
+              ],
             },
-          })
-        }
+          ],
+          easing: 'spring(1, 30, 10, 0)',
+          duration: 2000,
+          complete: () => {
+            window.location.href = '/partners'
+          },
+        })
       }
-
-      function touchMove(e) {
-        moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
-      }
-
-      document.addEventListener('touchmove', touchMove)
     }
+
+    function touchMove(e) {
+      moveAt(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
+    }
+
+    svgRight.addEventListener('touchmove', touchMove)
 
     svgRight.addEventListener('touchstart', touchStart)
     svgRight.addEventListener('touchend', touchEnd)
@@ -277,8 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     svgRight.addEventListener('mouseenter', mouseEnter)
     svgRight.addEventListener('mouseleave', mouseLeave)
-    // svgRight.addEventListener('touchleave', mouseEnter)
-    // svgRight.addEventListener('touchenter', mouseLeave)
 
     pathRight.addEventListener('dragstart', () => {
       return false
