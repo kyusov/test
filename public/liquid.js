@@ -115,7 +115,7 @@ window.onload = () => {
             easing: 'spring(1, 30, 10, 0)',
             duration: 2000,
             complete: () => {
-              window.location.href = 'http://localhost:3001/partners'
+              window.location.href = '/partners'
             }
         })
       }
