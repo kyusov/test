@@ -938,13 +938,13 @@
 @media screen and (max-width: 425px) {
   @keyframes check {
     0% {
-      transform: translate(-5%, -2%);
+      transform: translate3d(-5%, -2%, 0);
     }
     50% {
-      transform: translate(5%, 2%);
+      transform: translate3d(5%, 2%, 0);
     }
     100% {
-      transform: translate(-5%, -2%);
+      transform: translate3d(-5%, -2%, 0);
     }
   }
 }
