@@ -329,9 +329,9 @@
         max-width: 272px;
         width: 35%;
         z-index: -1;
-        //left: 20%;
-        //top: -4.5%;
-        transform: translate(20%, -4.5%);
+        left: 20%;
+        top: -4.5%;
+        // transform: translate(20%, -4.5%);
         -webkit-animation: infinite 3s ease check;
         animation: infinite 3s ease check;
       }
@@ -568,6 +568,7 @@
       }
 
       .privileges {
+        margin-top: 0;
         &__img {
           display: flex;
           justify-content: center;

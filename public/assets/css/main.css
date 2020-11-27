@@ -555,7 +555,8 @@
   max-width: 272px;
   width: 35%;
   z-index: -1;
-  transform: translate(20%, -4.5%);
+  left: 20%;
+  top: -4.5%;
   animation: infinite 3s ease check;
 }
 
@@ -735,6 +736,9 @@
   }
   .darken .privilege__count span {
     -webkit-text-stroke: 1px #fff;
+  }
+  .darken .privilege .privileges {
+    margin-top: 0;
   }
   .darken .privilege .privileges__img {
     display: flex;
