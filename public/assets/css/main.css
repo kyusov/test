@@ -548,6 +548,7 @@
 .darken .privilege .privileges .check-item {
   max-width: 376px;
   width: 54%;
+  z-index: 0;
 }
 
 .darken .privilege .privileges .check-card {
