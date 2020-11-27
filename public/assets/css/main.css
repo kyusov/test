@@ -739,7 +739,6 @@
   .darken .privilege .privileges__img {
     display: flex;
     justify-content: center;
-    width: 225px;
     height: 200px;
   }
   .darken .privilege .privileges .basket-bag-big {
