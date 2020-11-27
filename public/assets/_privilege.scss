@@ -556,10 +556,6 @@
   .darken {
     .privilege {
 
-      &__img {
-        width: 225px;
-      }
-
       &__header {
         -webkit-text-stroke: 1px #fff;
       }
@@ -576,6 +572,7 @@
         &__img {
           display: flex;
           justify-content: center;
+          width: 225px;
         }
 
         .basket-bag-big {
