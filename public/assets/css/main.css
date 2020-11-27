@@ -558,7 +558,6 @@
   left: 20%;
   top: -4.5%;
   transform: translate(20%, -4.5%);
-  animation: infinite alternate 2s ease check;
 }
 
 .darken .privilege__text {
@@ -938,10 +937,10 @@
 @media screen and (max-width: 425px) {
   @keyframes check {
     0% {
-      transform: translate3d(-5%, -2%, 0);
+      transform: translate(-5%, -2%, 0);
     }
     100% {
-      transform: translate3d(5%, 2%, 0);
+      transform: translate(5%, 2%, 0);
     }
   }
 }

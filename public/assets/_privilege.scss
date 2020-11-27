@@ -332,8 +332,8 @@
         left: 20%;
         top: -4.5%;
         transform: translate(20%, -4.5%);
-        -webkit-animation: infinite alternate 2s ease check;
-        animation: infinite alternate 2s ease check;
+        // -webkit-animation: infinite alternate 2s ease check;
+        // animation: infinite alternate 2s ease check;
       }
     }
 
@@ -831,8 +831,8 @@
 @media screen and (max-width: 425px) {
   @keyframes check {
     0% {
-      -webkit-transform: translate3d(-5%, -2%, 0);
-      transform: translate3d(-5%, -2%, 0);
+      -webkit-transform: translate(-5%, -2%, 0);
+      transform: translate(-5%, -2%, 0);
     }
   
     // 50% {
@@ -841,8 +841,8 @@
     // }
   
     100% {
-      -webkit-transform: translate3d(5%, 2%, 0);
-      transform: translate3d(5%, 2%, 0);
+      -webkit-transform: translate(5%, 2%, 0);
+      transform: translate(5%, 2%, 0);
     }
   }
 }

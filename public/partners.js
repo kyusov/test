@@ -56,6 +56,15 @@ function basketAnimation() {
       delay: 200
     })
 
+    anime({
+      targets: '.check-card',
+      translateX: ['-5%', '5%'],
+      translateY: ['-2%', '2%'],
+      easing: 'easeInQuad',
+      direction: 'alternate',
+      loop: true
+    })
+
     flag = false
   }
   // if (show) {
