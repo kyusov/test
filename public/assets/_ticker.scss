@@ -1,0 +1,37 @@
+.marquee {
+  position: relative;
+  z-index: -5;
+  margin-top: 140px;
+
+  overflow: hidden;
+
+  max-height: 104px;
+
+  .second {
+    display: flex;
+  }
+}
+
+.darken {
+  .marquee {
+    opacity: 0;
+  }
+}
+// @keyframes marquee {
+//   0% {
+//     background-position: 0px 0px;
+//   }
+//   100% {
+//     background-position: 1452px 0;
+//   }
+// }
+
+@media screen and (max-width: 550px) {
+  .marquee {
+    margin-top: 75px;
+
+    img {
+      height: 70px;
+    }
+  }
+}

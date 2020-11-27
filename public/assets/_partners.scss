@@ -1,0 +1,324 @@
+.partners {
+  margin-top: 165px;
+
+  &__wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__companys {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 85px auto 0 auto;
+  }
+
+  &__company-container {
+    width: 21%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:nth-child(n + 5) {
+      margin-top: 95px;
+    }
+  }
+
+  &__row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__company {
+    &:nth-child(2n) {
+      margin-top: 5%;
+    }
+  }
+
+  &__more-btn {
+    margin-top: 10%;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 900;
+    color: $color-text;
+    line-height: 28px;
+    text-align: center;
+
+    span {
+      position: relative;
+      &:hover {
+        cursor: pointer;
+        &::before {
+          width: 100%;
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        width: 15%;
+        height: 5px;
+        left: 0;
+        opacity: 0.4;
+        transition: all 0.2s ease-in-out;
+        transition-duration: 0.75s;
+        background-color: $color-main;
+      }
+    }
+
+    &.disabled {
+      span {
+        pointer-events: none;
+      }
+    }
+  }
+
+  /// logotypes
+  &__c1,
+  &__c2,
+  &__c3,
+  &__c4,
+  &__c5,
+  &__c6,
+  &__c7,
+  &__c8 {
+    width: 10rem;
+    height: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all ease 0.2s;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__c4,
+  &__c8 {
+    background-size: inherit;
+  }
+
+  &__c1 {
+    background-image: url('../pictures/companys/Зоодисконт\ лого.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/Зоодисконт\ цвет\ цовер.svg');
+    }
+  }
+
+  &__c2 {
+    background-image: url('../pictures/companys/Кадровый.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/КЦ\ Цвет\ ховер.svg');
+    }
+  }
+
+  &__c3 {
+    background-image: url('../pictures/companys/Ноль\ Один.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/01\ цвет\ ховер.svg');
+    }
+  }
+
+  &__c4 {
+    background-image: url('../pictures/companys/Начинка.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/Начинка\ цвет\ ховер.svg');
+    }
+  }
+
+  &__c5 {
+    background-image: url('../pictures/companys/Зооиндустрия\ лого.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/Индустрия\ цвет\ ховер.svg');
+    }
+  }
+
+  &__c6 {
+    background-image: url('../pictures/companys/Колхоз.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/Колхоз\ цвет\ ховер.svg');
+    }
+  }
+
+  &__c7 {
+    background-image: url('../pictures/companys/ЗооОпт.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/Зооопт\ цвет\ ховер.svg');
+    }
+  }
+
+  &__c8 {
+    background-image: url('../pictures/companys/Корм\ на\ дом.svg');
+    &:hover {
+      background-image: url('../pictures/companys/active/Корм\ цвет\ ховер.svg');
+    }
+  }
+}
+
+.darken {
+  .partners {
+    opacity: 0;
+    &__title {
+      color: $color-white;
+    }
+
+    &__more-btn {
+      span {
+        color: $color-white;
+      }
+    }
+
+    &__c1 {
+      background-image: url('../pictures/companys/ЗоодисконтЛого-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/Зоодисконт\ цвет\ цовер.svg');
+      }
+    }
+
+    &__c2 {
+      background-image: url('../pictures/companys/Кадровый-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/КЦ\ Цвет\ ховер.svg');
+      }
+    }
+
+    &__c3 {
+      background-image: url('../pictures/companys/Ноль\ Один-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/01\ цвет\ ховер.svg');
+      }
+    }
+
+    &__c4 {
+      background-image: url('../pictures/companys/Начинка-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/Начинка\ цвет\ ховер.svg');
+      }
+    }
+
+    &__c5 {
+      background-image: url('../pictures/companys/Зооиндустрия\ лого-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/Индустрия\ цвет\ ховер.svg');
+      }
+    }
+
+    &__c6 {
+      background-image: url('../pictures/companys/Колхоз-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/Колхоз\ цвет\ ховер.svg');
+      }
+    }
+
+    &__c7 {
+      background-image: url('../pictures/companys/ЗооОпт-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/Зооопт\ цвет\ ховер.svg');
+      }
+    }
+
+    &__c8 {
+      background-image: url('../pictures/companys/Корм\ на\ дом-darken.svg');
+      &:hover {
+        background-image: url('../pictures/companys/active/Корм\ цвет\ ховер.svg');
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .partners {
+    margin-top: 150px;
+
+    &__title {
+      text-align: center;
+    }
+
+    &__companys {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &__c1,
+    &__c2,
+    &__c3,
+    &__c5,
+    &__c6,
+    &__c7 {
+      width: 13em;
+    }
+
+    &__c4,
+    &__c8 {
+      background-size: contain;
+      width: 9em;
+    }
+
+    &__column {
+      width: 45%;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .partners {
+    margin-top: 100px;
+
+    &__title {
+      font-size: 24px;
+      line-height: 28px;
+      width: 160px;
+      text-align: left;
+      padding-left: 44px;
+    }
+
+    &__companys {
+      margin-top: 40px;
+      padding-left: 30px;
+    }
+
+    &__company {
+      width: 6em;
+      height: 5em;
+    }
+
+    &__c4,
+    &__c8 {
+      width: 4em;
+    }
+
+    &__more-btn {
+      font-size: 14px;
+      line-height: 16px;
+
+      span {
+        &::before {
+          width: 100%;
+          height: 9px;
+        }
+      }
+    }
+  }
+
+  .darken {
+    .partners {
+      &__title {
+        width: 100%;
+      }
+    }
+  }
+}
