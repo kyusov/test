@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   )
 
   const width = 20
-  const height = svgLeft.clientHeight
+  const height = svgLeft.clientHeight + 100
 
   const offset = 10
   const pip = -40
