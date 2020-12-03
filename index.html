@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="jquery-transit.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
 </head>
 
 <body>
@@ -19,6 +21,14 @@
                 <div class="container">
                     <div class="header__wrapper">
                         <img src="assets/pictures/logo.svg" alt="Логотип" class="header__logo">
+                        <!-- <div class="header__city">Ваш город: <button>Иркутск</button>
+                            <div class="choose-city">
+                                <ul>
+                                    <li class="chosen-city">Иркутск</li>
+                                    <li class="chosen-city" >Новосибирск</li>
+                                </ul>
+                            </div>
+                        </div> -->
                         <div class="header__menu-btn">Меню</div>
                     </div>
                 </div>
@@ -135,10 +145,10 @@
                             <div class="promo__buy-btn">
                                 <button class="offer__buy-btn offer__purchase-card">Приобрести карту</button>
                             </div>
-                            <div class="promo__play-btn">
+                            <!-- <div class="promo__play-btn">
                                 <div class="promo__play-btn-after"></div>
                                 <div class="promo__play-btn-before"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -218,7 +228,7 @@
                 </div>
             </footer>
             <svg class="svg-slider-right" fill="black">
-                <path fill="#333"/>
+                <path fill="#333" />
                 <defs>
                     <clipPath id="myPath-right">
                         <path />
@@ -226,7 +236,7 @@
                 </defs>
             </svg>
         </div>
-        
+
         <nav class="menu">
             <div class="menu__overlay"></div>
             <div class="menu__wrapper">
@@ -268,6 +278,7 @@
             <div class="modal__wrapper">
                 <div class="modal__title-wrapper">
                     <div class="modal__title">ПРИОБРЕСТИ КАРТУ</div>
+                    <div class="modal__title hidden">МЕСТО ПОЛУЧЕНИЯ</div>
                     <div class="modal__close">
                         <span></span>
                         <span></span>
@@ -279,8 +290,27 @@
                     <input type="tel" name="Телефон" id="tel" placeholder="Номер телефона">
                     <input type="checkbox" name="Согласие" id="consent_modal">
                     <label for="consent_modal">Согласие на обработку персональных данных</label>
+
+                    <div class="modal__wrapper-city hidden">
+                        <div class="modal__city-map city-map">
+                            <div class="city-map__title">Ваш город: <span class="city-show">Иркутск</span>
+                            <ul class="city-map__choose">
+                                <li class="city-map__chosen">Иркутск</li>
+                                <li class="city-map__chosen">Новосибирск</li>
+                            </ul>
+                            </div>
+                            <div class="modal__city-search city-search ui-widget">
+                                <input class="city-search__search" type="text" name="Адрес получения"
+                                    id="search-address">
+                                <ul class="search-results"></ul>
+                            </div>
+                        </div>
+                        <div class="city-map__map" id="map"></div>
+                    </div>
+
                     <div class="modal__button-wrapper">
-                        <button type="submit">Купить</button>
+                        <button class="button-next">Далее</button>
+                        <button class="hidden" type="submit">Заказать</button>
                     </div>
                 </form>
             </div>

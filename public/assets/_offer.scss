@@ -29,6 +29,7 @@
       max-width: 277px;
       left: 12%;
       bottom: -10%;
+      filter: blur(10px);
     }
 
     &-right {
@@ -37,6 +38,7 @@
       bottom: 0;
       right: 12%;
       bottom: -15%;
+      filter: blur(8px);
     }
 
     &-bottom {
@@ -45,6 +47,21 @@
       z-index: -1;
       top: -14%;
       right: 16%;
+      filter: blur(7px);
+    }
+
+    @media screen and (max-width: 775px) {
+      &-left {
+        filter: blur(4px);
+      }
+
+      &-right {
+        filter: blur(6px);
+      }
+
+      &-bottom {
+        filter: blur(3px);
+      }
     }
   }
 

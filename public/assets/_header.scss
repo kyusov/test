@@ -8,6 +8,27 @@ $menu-btn-height: 64px;
   top: 0;
   opacity: 0;
 
+  &__city {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 96px;
+    position: relative;
+
+    button {
+      outline: none;
+      background-color: transparent;
+      border: none;
+      font-size: 1rem;
+      margin-left: .5rem;
+      border-bottom: 1px dotted #333;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   &__wrapper {
     width: 100%;
     max-width: 1165px;
@@ -67,7 +88,7 @@ $menu-btn-height: 64px;
     &__wrapper {
       width: 100%;
       margin: 0;
-      padding: 0 82px;
+      padding: 0 30px;
     }
   }
 }

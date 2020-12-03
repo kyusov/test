@@ -9,6 +9,10 @@
 
   display: none;
 
+  .hidden {
+    display: none;
+  }
+
   &__overlay {
     position: absolute;
     z-index: 8900;
@@ -22,15 +26,18 @@
     opacity: 0;
   }
 
-  &__wrapper {
+  &__wrapper,
+  &__back {
     position: absolute;
     width: 30%;
-    height: 40%;
-
+    height: 60%;
     min-height: 520px;
     max-height: 600px;
     top: 50%;
     left: 50%;
+  }
+
+  &__wrapper {
     background-color: #fff;
     padding: 50px;
     z-index: 8950;
@@ -43,6 +50,19 @@
 
     @media screen and (max-width: 1440px) {
       width: 50%;
+    }
+
+    @media screen and (max-width: 998px) {
+      width: 65%;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 75%;
+    }
+
+    @media screen and (max-width: 475px) {
+      width: 95%;
+      padding: 40px;
     }
 
     @media screen and (max-width: 425px) {
@@ -63,14 +83,7 @@
   }
 
   &__back {
-    position: absolute;
-    width: 30%;
-    height: 40%;
-    min-height: 520px;
-    max-height: 600px;
-    top: 50%;
-    left: 50%;
-    background-color: #FDC300;
+    background-color: #fdc300;
     z-index: 8940;
     border: 1px solid #000;
     border-radius: 10px;
@@ -80,6 +93,18 @@
 
     @media screen and (max-width: 1440px) {
       width: 50%;
+    }
+
+    @media screen and (max-width: 998px) {
+      width: 65%;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 75%;
+    }
+
+    @media screen and (max-width: 475px) {
+      width: 95%;
     }
 
     @media screen and (max-width: 425px) {
@@ -127,6 +152,11 @@
         transform: translate3d(-50%, -50%, 0) rotate(-45deg);
       }
 
+      @media screen and (max-width: 475px) {
+        width: 26px;
+        height: 4px;
+      }
+
       @media screen and (max-width: 425px) {
         width: 20px;
         height: 3px;
@@ -141,6 +171,11 @@
         width: 16px;
         height: 2px;
       }
+    }
+
+    @media screen and (max-width: 475px) {
+      width: 35px;
+      height: 35px;
     }
 
     @media screen and (max-width: 425px) {
@@ -164,6 +199,24 @@
     font-weight: 900;
     line-height: 38px;
     color: #333;
+
+    opacity: 1;
+    transition: opacity 0.4s ease;
+
+    @media screen and (max-width: 1635px) {
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    @media screen and (max-width: 475px) {
+      font-size: 22px;
+      line-height: 24px;
+    }
 
     @media screen and (max-width: 425px) {
       font-size: 20px;
@@ -237,6 +290,10 @@
       &:hover {
         cursor: pointer;
       }
+
+      &.hidden {
+        display: none;
+      }
     }
 
     input[type='checkbox']:checked + label {
@@ -298,8 +355,8 @@
     justify-content: flex-end;
     margin-top: 20px;
     position: relative;
-    
 
+    .button-next,
     button[type='submit'] {
       font-weight: 500;
       font-size: 18px;
@@ -341,6 +398,10 @@
         }
       }
 
+      @media screen and (max-width: 884px) {
+        padding: 15px 36px;
+      }
+
       @media screen and (max-width: 425px) {
         font-size: 24px;
         line-height: 28px;
@@ -379,6 +440,122 @@
           -webkit-transform: translate(3px, 5px);
         }
       }
+    }
+  }
+
+  &__wrapper-city {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .city-map {
+    &__map {
+      width: 100%;
+      height: 16rem;
+      margin-top: 2rem;
+    }
+
+    &__title {
+      padding: 0 0 .2rem 0;
+      position: relative;
+      > span {
+        border-bottom: 1px dotted #333;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__choose {
+      display: none;
+      list-style-type: none;
+      position: absolute;
+      z-index: 2;
+
+      background-color: #fff;
+
+      left: 10%;
+
+      li {
+        padding: .5rem;
+        background-color: #fff;
+
+        &:hover {
+          cursor: pointer;
+          background-color: darken(#fff, 10%);
+        }
+      }
+    }
+  }
+
+  &__city-search {
+    position: relative;
+  }
+
+  .city-search {
+    &__search {
+      width: 100%;
+      font-size: 1rem;
+      border-width: 1px;
+    }
+  }
+
+  .search-results {
+    position: absolute;
+    z-index: 2;
+    list-style-type: none;
+
+    li {
+      font-size: 1rem;
+      background-color: #fff;
+      padding: 5px 5px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken(#fff, 9%);
+      }
+    }
+  }
+}
+
+.darken {
+  .modal {
+    &__wrapper {
+      background-color: #333;
+    }
+
+    &__back {
+      background-color: #fff;
+    }
+
+    &__title {
+      color: #fff;
+    }
+
+    &__form > label {
+      color: #ffffff99
+    }
+
+    &__close {
+      background-color: #fff;
+
+      span {
+        background-color: #333;
+      }
+    }
+
+    &__form > input {
+      background-color: #333;
+      border-color: #ffffff99;
+
+      &::placeholder {
+        color: #ffffff99;
+      }
+    }
+
+    &__form input[type='checkbox'] + label::before {
+      background-color: #ffffff99;
     }
   }
 }
