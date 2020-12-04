@@ -529,6 +529,17 @@
 
       &__img {
         width: 60%;
+
+        .one-money, .two-money {
+          width: 9%;
+        }
+        .card-terminal {
+          width: 45%;
+        }
+
+        .terminal-shadow {
+          width: 40%;
+        }
       }
 
       &__picture {

@@ -745,6 +745,15 @@
   .privilege .privileges__img {
     width: 60%;
   }
+  .privilege .privileges__img .one-money, .privilege .privileges__img .two-money {
+    width: 9%;
+  }
+  .privilege .privileges__img .card-terminal {
+    width: 45%;
+  }
+  .privilege .privileges__img .terminal-shadow {
+    width: 40%;
+  }
   .privilege .privileges__picture {
     width: 100%;
   }

@@ -414,7 +414,7 @@ $(document).ready(() => {
 
         console.log(e)
 
-        e.data ? (s += e.data) : (s = s.slice(0, s.length - 1))
+        e.data ? (s += e.data) : s = s.slice(0, s.length - 1)
 
         if (s.length !== 0) {
           searchResults.innerHTML = ''
