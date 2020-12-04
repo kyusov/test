@@ -38,10 +38,6 @@
   justify-content: space-between;
 }
 
-.header__logo:hover {
-  cursor: pointer;
-}
-
 .header__menu-btn {
   text-transform: uppercase;
   background-color: #333333;
@@ -2511,6 +2507,10 @@
 
 .menu a {
   text-decoration: none;
+}
+
+.menu a:hover {
+  cursor: pointer;
 }
 
 .menu__wrapper, .menu__overlay {

@@ -4,6 +4,7 @@ var windowWidth = window.innerWidth
 let lightTheme = true
 
 let map
+let mapAgain = false
 
 const cities = [
   {
@@ -441,9 +442,9 @@ $(document).ready(() => {
             if (showResult[i]) {
               const t = cities.filter((e) => e.fullAddress === showResult[i])[0]
 
-              searchResults.innerHTML += `<li class="search-results__item" onclick="searchClick(this)" data-id="${citiesCoords[t.id]}">${
-                showResult[i]
-              }</li>`
+              searchResults.innerHTML += `<li class="search-results__item" onclick="searchClick(this)" data-id="${
+                citiesCoords[t.id]
+              }">${showResult[i]}</li>`
             }
           }
         } else {
@@ -451,26 +452,26 @@ $(document).ready(() => {
         }
       })
 
-    DG.then(function () {
-      map = DG.map('map', {
-        center: [52.283436, 104.296835],
-        zoom: 17,
-        fullscreenControl: false,
-        zoomControl: false,
+    if (!mapAgain) {
+      DG.then(function () {
+        map = DG.map('map', {
+          center: [52.283436, 104.296835],
+          zoom: 17,
+          fullscreenControl: false,
+          zoomControl: false,
+        })
+        citiesCoords.map((e) => {
+          DG.marker([e.split(',')[0], e.split(',')[1]])
+            .on('click', (el) => {
+              const idx = citiesCoords.indexOf(
+                `${el.latlng.lat},${el.latlng.lng}`
+              )
+              $('.city-search__search').val(cities[idx].fullAddress)
+            })
+            .addTo(map)
+        })
       })
-
-      citiesCoords.map((e) => {
-        DG.marker([e.split(',')[0], e.split(',')[1]])
-          .on('click', (el) => {
-            const idx = citiesCoords.indexOf(
-              `${el.latlng.lat},${el.latlng.lng}`
-            )
-            console.log(`${el.latlng.lat},${el.latlng.lng}`)
-            $('.city-search__search').val(cities[idx].fullAddress)
-          })
-          .addTo(map)
-      })
-    })
+    }
   })
 
   $('.modal__overlay').on('click', function (e) {
@@ -506,6 +507,25 @@ function closeModal() {
   } else {
     $('.second').marquee('resume')
   }
+
+  mapAgain = true
+
+  $('.modal__button-wrapper button').each(function (index) {
+    $(this).toggleClass('hidden')
+  })
+
+  $('.modal__title').each(function () {
+    $(this).toggleClass('hidden')
+  })
+
+  $('.modal__form input').each(function () {
+    $(this).toggleClass('hidden')
+  })
+
+  $('.modal__form label').toggleClass('hidden')
+  $('.modal__wrapper-city').toggleClass('hidden')
+  $('.city-search__search').toggleClass('hidden')
+
   anime({
     targets: '.modal__wrapper',
     opacity: 0,
