@@ -380,40 +380,6 @@
         &:not(:nth-child(2)) {
           flex-direction: column-reverse;
         }
-
-        .card-terminal {
-          bottom: 24%;
-          right: 6%;
-          width: 30%;
-        }
-
-        .terminal-shadow {
-          bottom: 14%;
-          right: 5%;
-          width: 30%;
-        }
-
-        .one-money {
-          left: 17%;
-          top: 44%;
-          width: 6%;
-        }
-
-        .two-money {
-          left: 6.4%;
-          bottom: 12.4%;
-          width: 6%;
-        }
-
-        .fire {
-          left: -8%;
-          bottom: 40%;
-        }
-
-        .fire-shadow {
-          left: 3%;
-          bottom: 40%;
-        }
       }
 
       &__picture {
@@ -424,9 +390,55 @@
         }
       }
 
+      &__img {
+        width: 100%;
+        justify-content: center; // delete 550px
+
+        .card-terminal {
+          bottom: 24%;
+          right: 23%; // rewrite on 6%
+          width: 28%;
+        }
+
+        .terminal-shadow {
+          bottom: 15%; // 14%
+          right: 26%; // rewrite on 5%
+          width: 25%; // rewrite on 30%
+        }
+
+        .one-money {
+          left: 32%; // 17%
+          top: 44%;
+          width: 5%; // 6%
+        }
+
+        .two-money {
+          left: 26%; // 6.4%
+          bottom: 12.4%;
+          width: 5%; // 6% 
+        }
+
+        .fire {
+          left: 15%; // -8
+          bottom: 40%;
+          width: 15%; //rewrite 20%
+        }
+
+        .fire-shadow {
+          left: 20%; // 3%
+          bottom: 40%;
+          width: 10%; // 20%
+        }
+      }
+
       &__text {
         margin-top: 50px;
         min-height: 250px;
+        max-width: 400px;
+        margin-right: 0;
+        &:nth-child(2) {
+          margin-left: 0;
+        }
       }
     }
 
@@ -530,15 +542,37 @@
       &__img {
         width: 60%;
 
-        .one-money, .two-money {
+        .one-money,
+        .two-money {
           width: 9%;
         }
         .card-terminal {
           width: 45%;
+          right: 6%;
+        }
+
+        .one-money {
+          left: 17%;
+        }
+
+        .two-money {
+          left: 6.4%;
         }
 
         .terminal-shadow {
           width: 40%;
+          bottom: 14%;
+          right: 5%;
+        }
+
+        .fire {
+          left: -8%;
+          width: 20%;
+        }
+
+        .fire-shadow {
+          left: 3%;
+          width: 20%;
         }
       }
 
@@ -571,7 +605,6 @@
 
   .darken {
     .privilege {
-
       &__header {
         -webkit-text-stroke: 1px #fff;
       }
@@ -595,22 +628,22 @@
         .basket-bag-big {
           left: 31%;
         }
-  
+
         .basket-bag-middle {
           right: 34%;
           bottom: 20%;
         }
-  
+
         .middle-right {
           right: 25%;
           bottom: 13%;
         }
-  
+
         .basket-bag-top {
           right: 45%;
           bottom: 18%;
         }
-  
+
         .check-card {
           left: 50%;
           top: 20%;
@@ -733,22 +766,22 @@
       transform: translate(0, 0);
       opacity: 1;
     }
-  
+
     40% {
       opacity: 0;
     }
-  
+
     70% {
       -webkit-transform: translate(-20%, -5%);
       transform: translate(-20%, -5%);
     }
-  
+
     85% {
       -webkit-transform: translate(0, 0);
       transform: translate(0, 0);
       opacity: 0;
     }
-  
+
     100% {
       opacity: 1;
     }
@@ -850,12 +883,12 @@
       -webkit-transform: translate(-5%, -2%, 0);
       transform: translate(-5%, -2%, 0);
     }
-  
+
     // 50% {
     //   -webkit-transform: translate3d(5%, 2%, 0);
     //   transform: translate3d(5%, 2%, 0);
     // }
-  
+
     100% {
       -webkit-transform: translate(5%, 2%, 0);
       transform: translate(5%, 2%, 0);

@@ -627,34 +627,6 @@
   .privilege .privileges__item:not(:nth-child(2)) {
     flex-direction: column-reverse;
   }
-  .privilege .privileges__item .card-terminal {
-    bottom: 24%;
-    right: 6%;
-    width: 30%;
-  }
-  .privilege .privileges__item .terminal-shadow {
-    bottom: 14%;
-    right: 5%;
-    width: 30%;
-  }
-  .privilege .privileges__item .one-money {
-    left: 17%;
-    top: 44%;
-    width: 6%;
-  }
-  .privilege .privileges__item .two-money {
-    left: 6.4%;
-    bottom: 12.4%;
-    width: 6%;
-  }
-  .privilege .privileges__item .fire {
-    left: -8%;
-    bottom: 40%;
-  }
-  .privilege .privileges__item .fire-shadow {
-    left: 3%;
-    bottom: 40%;
-  }
   .privilege .privileges__picture {
     margin: 0;
     width: 55%;
@@ -662,9 +634,48 @@
   .privilege .privileges__picture:nth-child(1) {
     margin: 0;
   }
+  .privilege .privileges__img {
+    width: 100%;
+    justify-content: center;
+  }
+  .privilege .privileges__img .card-terminal {
+    bottom: 24%;
+    right: 23%;
+    width: 28%;
+  }
+  .privilege .privileges__img .terminal-shadow {
+    bottom: 15%;
+    right: 26%;
+    width: 25%;
+  }
+  .privilege .privileges__img .one-money {
+    left: 32%;
+    top: 44%;
+    width: 5%;
+  }
+  .privilege .privileges__img .two-money {
+    left: 26%;
+    bottom: 12.4%;
+    width: 5%;
+  }
+  .privilege .privileges__img .fire {
+    left: 15%;
+    bottom: 40%;
+    width: 15%;
+  }
+  .privilege .privileges__img .fire-shadow {
+    left: 20%;
+    bottom: 40%;
+    width: 10%;
+  }
   .privilege .privileges__text {
     margin-top: 50px;
     min-height: 250px;
+    max-width: 400px;
+    margin-right: 0;
+  }
+  .privilege .privileges__text:nth-child(2) {
+    margin-left: 0;
   }
   .privilege__ending {
     flex-direction: column;
@@ -745,14 +756,32 @@
   .privilege .privileges__img {
     width: 60%;
   }
-  .privilege .privileges__img .one-money, .privilege .privileges__img .two-money {
+  .privilege .privileges__img .one-money,
+  .privilege .privileges__img .two-money {
     width: 9%;
   }
   .privilege .privileges__img .card-terminal {
     width: 45%;
+    right: 6%;
+  }
+  .privilege .privileges__img .one-money {
+    left: 17%;
+  }
+  .privilege .privileges__img .two-money {
+    left: 6.4%;
   }
   .privilege .privileges__img .terminal-shadow {
     width: 40%;
+    bottom: 14%;
+    right: 5%;
+  }
+  .privilege .privileges__img .fire {
+    left: -8%;
+    width: 20%;
+  }
+  .privilege .privileges__img .fire-shadow {
+    left: 3%;
+    width: 20%;
   }
   .privilege .privileges__picture {
     width: 100%;
