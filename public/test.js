@@ -410,29 +410,10 @@ $(document).ready(() => {
     let ctrlA = false
     document
       .querySelector('.city-search__search')
-      .addEventListener('keydown', (e) => {
+      .addEventListener('input', (e) => {
         let showResult = []
 
-        if (e.code === 'Backspace' && e.ctrlKey) {
-          s = ''
-        }
-
-        if (e.ctrlKey && e.code === 'KeyA') {
-          ctrlA = !ctrlA
-        } else {
-          ctrlA = !ctrlA
-        }
-
-        if (ctrlA && e.code === 'Backspace') {
-          s = ''
-        }
-
-        ;(e.key >= 'а' && e.key <= 'я') ||
-        (e.key >= 'А' && e.key <= 'Я') ||
-        e.key === 'ё' ||
-        e.key === 'Ё'
-          ? (s += e.key)
-          : (s = s.slice(0, s.length - 1))
+        e.data ? (s += e.data) : (s = s.slice(0, s.length - 1))
 
         if (s.length !== 0) {
           searchResults.innerHTML = ''
