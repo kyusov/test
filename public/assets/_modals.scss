@@ -460,6 +460,10 @@
       width: 100%;
       height: 16rem;
       margin-top: 2rem;
+
+      @media screen and (max-width:475px) {
+        height: 10rem;
+      }
     }
 
     &__title {

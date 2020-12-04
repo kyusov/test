@@ -2405,6 +2405,12 @@
   margin-top: 2rem;
 }
 
+@media screen and (max-width: 475px) {
+  .modal .city-map__map {
+    height: 10rem;
+  }
+}
+
 .modal .city-map__title {
   padding: 0 0 .2rem 0;
   position: relative;

@@ -407,11 +407,12 @@ $(document).ready(() => {
       )
     }
 
-    let ctrlA = false
     document
       .querySelector('.city-search__search')
       .addEventListener('input', (e) => {
         let showResult = []
+
+        console.log(e)
 
         e.data ? (s += e.data) : (s = s.slice(0, s.length - 1))
 
