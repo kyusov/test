@@ -35,6 +35,12 @@
     max-height: 600px;
     top: 50%;
     left: 50%;
+
+    @media screen and (max-width: 475px) {
+      width: 95%;
+      height: 90%;
+      padding: 40px;
+    }
   }
 
   &__wrapper {

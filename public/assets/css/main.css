@@ -1919,6 +1919,14 @@
   left: 50%;
 }
 
+@media screen and (max-width: 475px) {
+  .modal__wrapper, .modal__back {
+    width: 95%;
+    height: 90%;
+    padding: 40px;
+  }
+}
+
 .modal__wrapper {
   background-color: #fff;
   padding: 50px;
