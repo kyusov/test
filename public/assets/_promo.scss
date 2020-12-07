@@ -39,7 +39,8 @@
     width: 70%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-top: 4rem;
   }
@@ -71,7 +72,7 @@
   }
 
   &__buy-btn {
-    margin-left: 25%;
+    // margin-left: 25%;
   }
 }
 
@@ -132,13 +133,14 @@
       width: 100%;
       margin: 0;
       margin-top: 50px;
-      padding-left: 82px;
-      justify-content: flex-start;
+      // padding-left: 82px;
+      // justify-content: flex-start;
+      // justify-content: center;
     }
 
     &__buy-btn {
       margin: 0;
-      margin-right: 96px;
+      // margin-right: 96px;
     }
   }
 

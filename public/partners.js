@@ -1,10 +1,9 @@
 var flag = true
 
 window.onload = () => {
-  $('.second').marquee({
-    duration: 15000,
-    startVisible: true,
-    duplicated: true,
+  new Marquee('.second', {
+    continuos: true,
+    direction: 'rtl',
   })
 
   anime({
@@ -22,7 +21,7 @@ window.onload = () => {
     easing: 'easeInQuad',
   })
 
-  if (window.innerWidth < 480) {
+  if (window.innerWidth < 550) {
     anime({
       targets: '.check-card',
       translateX: ['-5%', '5%'],
@@ -44,127 +43,90 @@ window.onload = () => {
 }
 
 function basketAnimation() {
-  if (flag) {
-    if (window.innerWidth < 480) {
-      anime({
-        targets: '.basket-front',
-        opacity: [0, 1],
-        translateX: ['-60%', '0%'],
-        translateY: ['-38%', '0%'],
-        easing: 'spring(1, 40, 10, 0)',
-      })
+  if (window.innerWidth <= 550) {
+    anime({
+      targets: '.basket-front',
+      opacity: [0, 1],
+      translateX: ['-60%', '0%'],
+      translateY: ['-38%', '0%'],
+      easing: 'spring(1, 40, 10, 0)',
+    })
 
-      anime({
-        targets: '.basket-back',
-        opacity: [0, 1],
-        translateX: ['-60%', '0%'],
-        translateY: ['-38%', '8.5%'],
-        easing: 'spring(1, 40, 10, 0)',
-      })
+    anime({
+      targets: '.basket-back',
+      opacity: [0, 1],
+      translateX: ['-60%', '0%'],
+      translateY: ['-38%', '8.5%'],
+      easing: 'spring(1, 40, 10, 0)',
+    })
 
-      anime({
-        targets: '.basket-bag-big',
-        opacity: [0, 1],
-        translateY: ['-100%', '-17%'],
-        easing: 'easeOutQuart',
-        delay: 300,
-      })
+    anime({
+      targets: '.basket-bag-big',
+      opacity: [0, 1],
+      translateY: ['-100%', '-17%'],
+      easing: 'easeOutQuart',
+      delay: 300,
+    })
 
-      anime({
-        targets: '.basket-bag-middle',
-        opacity: [0, 1],
-        translateY: ['-150%', '-17%'],
-        easing: 'easeOutQuart',
-        delay: 200,
-      })
+    anime({
+      targets: '.basket-bag-middle',
+      opacity: [0, 1],
+      translateY: ['-150%', '-17%'],
+      easing: 'easeOutQuart',
+      delay: 200,
+    })
 
-      anime({
-        targets: '.basket-bag-top',
-        opacity: [0, 1],
-        translateY: ['-150%', '-17%'],
-        easing: 'easeOutQuart',
-        delay: 200,
-      })
-    } else {
-      anime({
-        targets: '.basket-front',
-        opacity: [0, 1],
-        translateX: ['-60%', '0%'],
-        translateY: ['-38%', '0%'],
-        easing: 'spring(1, 40, 10, 0)',
-      })
+    anime({
+      targets: '.basket-bag-top',
+      opacity: [0, 1],
+      translateY: ['-150%', '-17%'],
+      easing: 'easeOutQuart',
+      delay: 200,
+    })
 
-      anime({
-        targets: '.basket-back',
-        opacity: [0, 1],
-        translateX: ['-60%', '0%'],
-        translateY: ['-38%', '0%'],
-        easing: 'spring(1, 40, 10, 0)',
-      })
+  } else {
+    anime({
+      targets: '.basket-front',
+      opacity: [0, 1],
+      translateX: ['-60%', '0%'],
+      translateY: ['-38%', '0%'],
+      easing: 'spring(1, 40, 10, 0)',
+    })
 
-      anime({
-        targets: '.basket-bag-big',
-        opacity: [0, 1],
-        translateY: ['-100%', '0%'],
-        easing: 'easeOutQuart',
-        delay: 300,
-      })
+    anime({
+      targets: '.basket-back',
+      opacity: [0, 1],
+      translateX: ['-60%', '0%'],
+      translateY: ['-38%', '0%'],
+      easing: 'spring(1, 40, 10, 0)',
+    })
 
-      anime({
-        targets: '.basket-bag-middle',
-        opacity: [0, 1],
-        translateY: ['-150%', '0%'],
-        easing: 'easeOutQuart',
-        delay: 200,
-      })
+    anime({
+      targets: '.basket-bag-big',
+      opacity: [0, 1],
+      translateY: ['-100%', '0%'],
+      easing: 'easeOutQuart',
+      delay: 300,
+    })
 
-      anime({
-        targets: '.basket-bag-top',
-        opacity: [0, 1],
-        translateY: ['-150%', '0%'],
-        easing: 'easeOutQuart',
-        delay: 200,
-      })
-    }
+    anime({
+      targets: '.basket-bag-middle',
+      opacity: [0, 1],
+      translateY: ['-150%', '0%'],
+      easing: 'easeOutQuart',
+      delay: 200,
+    })
 
-    flag = false
+    anime({
+      targets: '.basket-bag-top',
+      opacity: [0, 1],
+      translateY: ['-150%', '0%'],
+      easing: 'easeOutQuart',
+      delay: 200,
+    })
   }
-  // if (show) {
-  //   $('.basket-front').transition({
-  //     x: '0',
-  //     y: '0',
-  //     opacity: 1,
-  //     duration: 700,
-  //   })
 
-  //   $('.basket-back').transition({
-  //     x: '0',
-  //     y: '0',
-  //     opacity: 1,
-  //     duration: 700,
-  //   })
-
-  //   $('.basket-bag-big').transition({
-  //     y: '0',
-  //     opacity: 1,
-  //     duration: 1000,
-  //     delay: 200,
-  //   })
-
-  //   $('.basket-bag-middle').transition({
-  //     y: '0',
-  //     opacity: 1,
-  //     duration: 700,
-  //     delay: 300,
-  //   })
-
-  //   $('.basket-bag-top').transition({
-  //     y: '0',
-  //     opacity: 1,
-  //     duration: 500,
-  //     delay: 200,
-  //   })
-  // }
+  flag = false
 }
 
 function smilesAnimation(show) {
@@ -178,12 +140,6 @@ function smilesAnimation(show) {
 }
 
 $(window).scroll(function () {
-  if ($(this).scrollTop() > $('.second').offset().top + 100) {
-    $('.second').marquee('pause')
-  } else {
-    $('.second').marquee('resume')
-  }
-
   if (
     $(this).scrollTop() > $('.smiles').closest('div').offset().top - 250 ||
     $(this).scrollTop() < $('.smiles').closest('div').offset().top - 250
@@ -205,7 +161,9 @@ $(window).scroll(function () {
       $('.basket-front').closest('div').offset().top - 250 &&
     $(this).scrollTop() < $('.basket-front').closest('div').offset().top + 500
   ) {
-    basketAnimation()
+    if (flag) {
+      basketAnimation()
+    }
   }
 })
 
@@ -239,7 +197,7 @@ $(document).ready(() => {
 
     $('.menu').css({ display: 'flex', opacity: 1 })
     $('.menu__overlay').css('display', 'block')
-    $('.first').marquee('pause')
+    // $('.first').marquee('pause')
 
     $('body').css('overflow-y', 'hidden')
 
@@ -265,7 +223,7 @@ $(document).ready(() => {
 
   $('.menu__wrapper-close').on('click', () => {
     $('body').css('overflow-y', 'unset')
-    $('.first').marquee('resume')
+    // $('.first').marquee('resume')
     anime({
       targets: '.menu__wrapper',
       opacity: 0,
@@ -292,7 +250,7 @@ $(document).ready(() => {
 
   $('.offer__purchase-card').each(function () {
     $(this).on('click', () => {
-      $('.second').marquee('pause')
+      // $('.second').marquee('pause')
 
       $('.modal').css('display', 'block')
       $('.modal__overlay').css('display', 'block')
@@ -340,7 +298,7 @@ $(document).ready(() => {
 
   $('.offer__partner-card').each(function () {
     $(this).on('click', () => {
-      $('.second').marquee('pause')
+      // $('.second').marquee('pause')
 
       $('.modal').css('display', 'block')
       $('.modal__overlay').css('display', 'block')
@@ -379,48 +337,43 @@ $(document).ready(() => {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').style.backgroundColor = '#333'
-  // anime({
-  //   targets: '.darken',
-  //   opacity: [0, 1],
-  //   easing: 'easeInQuad'
-  // })
 })
 
 function modalClose() {
-  $('.second').marquee('resume')
-    anime({
-      targets: '.modal__wrapper',
-      opacity: 0,
-      translateY: ['-50%', '100%'],
-      translateX: ['-50%', '-50%'],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.modal__wrapper').css('display', 'none')
-      },
-    })
+  // $('.second').marquee('resume')
+  anime({
+    targets: '.modal__wrapper',
+    opacity: 0,
+    translateY: ['-50%', '100%'],
+    translateX: ['-50%', '-50%'],
+    duration: 1000,
+    easing: 'easeOutExpo',
+    complete: function () {
+      $('.modal__wrapper').css('display', 'none')
+    },
+  })
 
-    anime({
-      targets: '.modal__back',
-      opacity: 0,
-      translateY: ['calc(-50% + 5px)', '100%'],
-      translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.modal__back').css('display', 'none')
-      },
-    })
+  anime({
+    targets: '.modal__back',
+    opacity: 0,
+    translateY: ['calc(-50% + 5px)', '100%'],
+    translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
+    duration: 1000,
+    easing: 'easeOutExpo',
+    complete: function () {
+      $('.modal__back').css('display', 'none')
+    },
+  })
 
-    anime({
-      targets: '.modal__overlay',
-      opacity: 0,
-      delay: 500,
-      duration: 600,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.modal').css('display', 'none')
-        $('.modal__overlay').css('display', 'none')
-      },
-    })
+  anime({
+    targets: '.modal__overlay',
+    opacity: 0,
+    delay: 500,
+    duration: 600,
+    easing: 'easeOutExpo',
+    complete: function () {
+      $('.modal').css('display', 'none')
+      $('.modal__overlay').css('display', 'none')
+    },
+  })
 }

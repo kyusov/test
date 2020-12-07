@@ -139,6 +139,52 @@ document.addEventListener('DOMContentLoaded', () => {
     svgRight.addEventListener('touchstart', touchStart)
     svgRight.addEventListener('touchend', touchEnd)
   } else {
+
+    const clickedHandler = () => {
+      svgRight.style.width = '100%'
+      console.log('click')
+
+      anime({
+        targets: [
+          '.white .header',
+          '.white .marquee',
+          '.white .offer',
+          '.white .privilege',
+          '.white .promo',
+          '.white .partners',
+          '.white .contacts',
+        ],
+        opacity: [1, 0],
+        easing: 'easeInQuad',
+      })
+
+      anime({
+        targets: pathRight,
+        d: [
+          {
+            value: [
+              getPath(
+                svgRight.clientWidth,
+                height,
+                offset,
+                0,
+                true,
+                0
+              ),
+              getPath(0, height, svgRight.clientWidth, 0, false, 0),
+            ],
+          },
+        ],
+        easing: 'spring(1, 30, 10, 0)',
+        duration: 2000,
+        complete: () => {
+          window.location.href = '/partners'
+        },
+      })
+    }
+
+    pathRight.addEventListener('click', clickedHandler)
+
     pathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
 
     clipPathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
@@ -157,9 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       svgRight.style.width = '50px'
       pathRight.removeEventListener('mousedown', mouseDown)
+      pathRight.removeEventListener('click', clickedHandler)
     }
 
     const mouseEnter = () => {
+      
       $('.text').css('right', '-100%')
       let width = svgRight.clientWidth - 20
       let offset = 10
@@ -174,10 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
         easing: 'easeInQuad',
       })
       pathRight.addEventListener('mousedown', mouseDown)
-      // pathRight.addEventListener('touchstart', mouseDown)
+      pathRight.addEventListener('click', clickedHandler)
     }
 
     const mouseDown = function (e) {
+      pathRight.removeEventListener('click', clickedHandler)
       svgRight.removeEventListener('mouseleave', mouseLeave)
       svgRight.removeEventListener('mouseenter', mouseEnter)
 
@@ -263,11 +312,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       document.addEventListener('mousemove', onMouseMove)
-      // document.addEventListener('touchmove', onMouseMove)
 
       svgRight.onmouseup = function () {
         document.removeEventListener('mousemove', onMouseMove)
-        // document.removeEventListener('touchmove', onMouseMove)
 
         anime({
           targets: pathRight,
@@ -280,9 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         svgRight.style.width = '50px'
         svgRight.addEventListener('mouseleave', mouseLeave)
-        // svgRight.addEventListener('touchleave', mouseLeave)
         svgRight.addEventListener('mouseenter', mouseEnter)
-        // svgRight.addEventListener('touchenter', mouseEnter)
 
         svgRight.onmouseup = null
         svgRight.ontouchend = null

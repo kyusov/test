@@ -8,9 +8,7 @@
   max-height: 104px;
   opacity: 0;
 
-  .second {
-    display: flex;
-  }
+  display: flex;
 }
 
 .darken {
@@ -18,14 +16,6 @@
     opacity: 0;
   }
 }
-// @keyframes marquee {
-//   0% {
-//     background-position: 0px 0px;
-//   }
-//   100% {
-//     background-position: 1452px 0;
-//   }
-// }
 
 @media screen and (max-width: 550px) {
   .marquee {

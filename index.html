@@ -10,7 +10,8 @@
     <script src="jquery-transit.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
     <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script> -->
+    <script src="marquee.js"></script>
 </head>
 
 <body>
@@ -21,19 +22,12 @@
                 <div class="container">
                     <div class="header__wrapper">
                         <img src="assets/pictures/logo.svg" alt="Логотип" class="header__logo">
-                        <!-- <div class="header__city">Ваш город: <button>Иркутск</button>
-                            <div class="choose-city">
-                                <ul>
-                                    <li class="chosen-city">Иркутск</li>
-                                    <li class="chosen-city" >Новосибирск</li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <div class="header__menu-btn">Меню</div>
                     </div>
                 </div>
             </header>
-            <div class="marquee first">
+            <div class="marquee first" id="first-marquee">
+                <img class="marquee__img" src="assets/pictures/rollText.svg" alt="rolling text">
                 <img class="marquee__img" src="assets/pictures/rollText.svg" alt="rolling text">
             </div>
             <div class="offer">

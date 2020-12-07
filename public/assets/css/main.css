@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
 .header {
   width: 100%;
@@ -113,9 +112,6 @@
   overflow: hidden;
   max-height: 104px;
   opacity: 0;
-}
-
-.marquee .second {
   display: flex;
 }
 
@@ -698,6 +694,37 @@
   .darken .privilege__count span {
     -webkit-text-stroke: 2px #fff;
   }
+  .darken .privilege .privileges__img {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 551px) {
+  .darken .privileges .privileges__text {
+    width: 50%;
+    margin-top: 4rem;
+  }
+  .darken .privileges .privileges__img {
+    width: 60%;
+  }
+  .darken .privileges .privileges__img .magnet {
+    width: 75%;
+  }
+  .darken .privileges .privileges__img .basket-bag-big {
+    left: 30%;
+  }
+  .darken .privileges .privileges__img .basket-bag-middle {
+    right: 33%;
+  }
+  .darken .privileges .privileges__img .middle-right {
+    right: 26%;
+  }
+  .darken .privileges .privileges__img .basket-bag-top {
+    right: 40%;
+  }
+  .darken .privileges .privileges__img .check-card {
+    left: 42.89%;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -1062,7 +1089,7 @@
   width: 70%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-top: 4rem;
 }
@@ -1089,10 +1116,6 @@
   top: 0;
   background-image: url("../pictures/PB.svg");
   animation: spin linear infinite 5s;
-}
-
-.promo__buy-btn {
-  margin-left: 25%;
 }
 
 @keyframes spin {
@@ -1147,12 +1170,9 @@
     width: 100%;
     margin: 0;
     margin-top: 50px;
-    padding-left: 82px;
-    justify-content: flex-start;
   }
   .promo__buy-btn {
     margin: 0;
-    margin-right: 96px;
   }
   .darken .promo__text {
     color: #333333;
@@ -1302,67 +1322,67 @@
 }
 
 .partners__c1 {
-  background-image: url("../pictures/companys/Зоодисконт лого.svg");
+  background-image: url("../pictures/companys/zoodiscount.png");
 }
 
 .partners__c1:hover {
-  background-image: url("../pictures/companys/active/Зоодисконт цвет цовер.svg");
+  background-image: url("../pictures/companys/active/zoodiscount-color.png");
 }
 
 .partners__c2 {
-  background-image: url("../pictures/companys/Кадровый.svg");
+  background-image: url("../pictures/companys/kadr.png");
 }
 
 .partners__c2:hover {
-  background-image: url("../pictures/companys/active/КЦ Цвет ховер.svg");
+  background-image: url("../pictures/companys/active/kadr-color.png");
 }
 
 .partners__c3 {
-  background-image: url("../pictures/companys/Ноль Один.svg");
+  background-image: url("../pictures/companys/01.png");
 }
 
 .partners__c3:hover {
-  background-image: url("../pictures/companys/active/01 цвет ховер.svg");
+  background-image: url("../pictures/companys/active/01-color.png");
 }
 
 .partners__c4 {
-  background-image: url("../pictures/companys/Начинка.svg");
+  background-image: url("../pictures/companys/filling.png");
 }
 
 .partners__c4:hover {
-  background-image: url("../pictures/companys/active/Начинка цвет ховер.svg");
+  background-image: url("../pictures/companys/active/filling-color.png");
 }
 
 .partners__c5 {
-  background-image: url("../pictures/companys/Зооиндустрия лого.svg");
+  background-image: url("../pictures/companys/zooindustry.png");
 }
 
 .partners__c5:hover {
-  background-image: url("../pictures/companys/active/Индустрия цвет ховер.svg");
+  background-image: url("../pictures/companys/active/zooindustry-color.png");
 }
 
 .partners__c6 {
-  background-image: url("../pictures/companys/Колхоз.svg");
+  background-image: url("../pictures/companys/kolkhoz.png");
 }
 
 .partners__c6:hover {
-  background-image: url("../pictures/companys/active/Колхоз цвет ховер.svg");
+  background-image: url("../pictures/companys/active/kolkhoz-color.png");
 }
 
 .partners__c7 {
-  background-image: url("../pictures/companys/ЗооОпт.svg");
+  background-image: url("../pictures/companys/zooopt.png");
 }
 
 .partners__c7:hover {
-  background-image: url("../pictures/companys/active/Зооопт цвет ховер.svg");
+  background-image: url("../pictures/companys/active/zooopt-color.png");
 }
 
 .partners__c8 {
-  background-image: url("../pictures/companys/Корм на дом.svg");
+  background-image: url("../pictures/companys/homefeed.png");
 }
 
 .partners__c8:hover {
-  background-image: url("../pictures/companys/active/Корм цвет ховер.svg");
+  background-image: url("../pictures/companys/active/homefeed-color.png");
 }
 
 .darken .partners {
@@ -1378,67 +1398,67 @@
 }
 
 .darken .partners__c1 {
-  background-image: url("../pictures/companys/ЗоодисконтЛого-darken.svg");
+  background-image: url("../pictures/companys/darken/zoodiscount-darken.png");
 }
 
 .darken .partners__c1:hover {
-  background-image: url("../pictures/companys/active/Зоодисконт цвет цовер.svg");
+  background-image: url("../pictures/companys/active/zoodiscount-color.png");
 }
 
 .darken .partners__c2 {
-  background-image: url("../pictures/companys/Кадровый-darken.svg");
+  background-image: url("../pictures/companys/darken/kadr-darken.png");
 }
 
 .darken .partners__c2:hover {
-  background-image: url("../pictures/companys/active/КЦ Цвет ховер.svg");
+  background-image: url("../pictures/companys/active/kadr-color.png");
 }
 
 .darken .partners__c3 {
-  background-image: url("../pictures/companys/Ноль Один-darken.svg");
+  background-image: url("../pictures/companys/darken/01-darken.png");
 }
 
 .darken .partners__c3:hover {
-  background-image: url("../pictures/companys/active/01 цвет ховер.svg");
+  background-image: url("../pictures/companys/active/01-color.png");
 }
 
 .darken .partners__c4 {
-  background-image: url("../pictures/companys/Начинка-darken.svg");
+  background-image: url("../pictures/companys/darken/filling-darken.png");
 }
 
 .darken .partners__c4:hover {
-  background-image: url("../pictures/companys/active/Начинка цвет ховер.svg");
+  background-image: url("../pictures/companys/active/filling-color.png");
 }
 
 .darken .partners__c5 {
-  background-image: url("../pictures/companys/Зооиндустрия лого-darken.svg");
+  background-image: url("../pictures/companys/darken/zooindustry-darken.png");
 }
 
 .darken .partners__c5:hover {
-  background-image: url("../pictures/companys/active/Индустрия цвет ховер.svg");
+  background-image: url("../pictures/companys/active/zooindustry-color.png");
 }
 
 .darken .partners__c6 {
-  background-image: url("../pictures/companys/Колхоз-darken.svg");
+  background-image: url("../pictures/companys/darken/kolkhoz-darken.png");
 }
 
 .darken .partners__c6:hover {
-  background-image: url("../pictures/companys/active/Колхоз цвет ховер.svg");
+  background-image: url("../pictures/companys/active/kolkhoz-color.png");
 }
 
 .darken .partners__c7 {
-  background-image: url("../pictures/companys/ЗооОпт-darken.svg");
+  background-image: url("../pictures/companys/darken/zooopt-darken.png");
 }
 
 .darken .partners__c7:hover {
-  background-image: url("../pictures/companys/active/Зооопт цвет ховер.svg");
+  background-image: url("../pictures/companys/active/zooopt-color.png");
 }
 
 .darken .partners__c8 {
-  background-image: url("../pictures/companys/Корм на дом-darken.svg");
+  background-image: url("../pictures/companys/darken/homefeed-darken.png");
 }
 
 .darken .partners__c8:hover {
-  background-image: url("../pictures/companys/active/Корм цвет ховер.svg");
+  background-image: url("../pictures/companys/active/homefeed-color.png");
 }
 
 @media screen and (max-width: 768px) {
@@ -2807,9 +2827,9 @@ h2 {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1440px) {
   .container {
-    padding: 0 15px;
+    padding: 0 40px;
   }
 }
 
