@@ -118,10 +118,14 @@ const citiesCoords = [
 
 window.onload = () => {
 
+  // butter.init()
+
   new Marquee('#first-marquee', {
     continuos: true,
     direction: 'rtl'
   })
+
+  $(window).scrollTop(window.location.search.replace('?', '').split('=')[1])
 
   anime({
     targets: [
@@ -263,7 +267,6 @@ $(document).ready(() => {
 
     $('.menu').css({ display: 'flex', opacity: 1 })
     $('.menu__overlay').css('display', 'block')
-    // $('.first').marquee('pause')
 
     $('body').css('overflow-y', 'hidden')
 
@@ -289,7 +292,7 @@ $(document).ready(() => {
 
   $('.menu__wrapper-close').on('click', () => {
     $('body').css('overflow-y', 'unset')
-    // $('.first').marquee('resume')
+
     anime({
       targets: '.menu__wrapper',
       opacity: 0,
@@ -316,11 +319,6 @@ $(document).ready(() => {
 
   $('.offer__purchase-card').each(function () {
     $(this).on('click', () => {
-      if (lightTheme) {
-        // $('.first').marquee('pause')
-      } else {
-        // $('.second').marquee('pause')
-      }
 
       $('.modal').css('display', 'block')
       $('.modal__overlay').css('display', 'block')
@@ -479,11 +477,6 @@ function searchClick(e) {
 }
 
 function closeModal() {
-  if (lightTheme) {
-    // $('.first').marquee('resume')
-  } else {
-    // $('.second').marquee('resume')
-  }
 
   mapAgain = true
 

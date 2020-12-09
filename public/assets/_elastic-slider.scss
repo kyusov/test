@@ -59,6 +59,18 @@
     }
   }
 
+  .arrow-slider {
+    path {
+      transform: translateX(-1%);
+    }
+  }
+
+  .arrow-slider-left {
+    path {
+      transform: translateX(1%);
+    }
+  }
+
 //   .clip-right {
 //     clip-path: url('#myPath-right');
 //   }

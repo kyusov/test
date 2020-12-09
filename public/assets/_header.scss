@@ -31,19 +31,12 @@ $menu-btn-height: 64px;
 
   &__wrapper {
     width: 100%;
-    max-width: 1165px;
     margin: 0 auto;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
-  // &__logo {
-  //   // &:hover {
-  //   //   cursor: pointer;
-  //   // }
-  // }
 
   &__menu-btn {
     text-transform: uppercase;
@@ -96,6 +89,7 @@ $menu-btn-height: 64px;
 @media screen and (max-width: 550px) {
   .header {
     &__wrapper {
+      margin-top: 15px;
       padding: 0 18px;
     }
 
@@ -119,14 +113,14 @@ $menu-btn-height: 64px;
     }
 
     &__menu-btn {
-      width: 32px;
-      height: 32px;
-      font-size: 8px;
-      line-height: 9px;
+      width: 42px;
+      height: 42px;
+      font-size: 10px;
+      line-height: 12px;
     }
 
     &__logo {
-      height: 50px;
+      height: 60px;
     }
   }
 }

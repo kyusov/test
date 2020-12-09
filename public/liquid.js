@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const offset = 40
   const pip = 40
 
+  const arrowCircle = document.querySelector('.arrow-slider')
+  arrowCircle.style.transform =
+    'translateY(' + (height / 2 - 120) + 'px) translateX(200%)'
+
   var shiftX
   var shiftY
   var widthInner
@@ -24,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
       'd',
       getPath(width, height, offset, pip, true, 0)
     )
+
+    arrowCircle.style.display = 'none'
 
     anime({
       targets: pathRight,
@@ -139,94 +145,133 @@ document.addEventListener('DOMContentLoaded', () => {
     svgRight.addEventListener('touchstart', touchStart)
     svgRight.addEventListener('touchend', touchEnd)
   } else {
-
     const clickedHandler = () => {
-      svgRight.style.width = '100%'
-      console.log('click')
+      // svgRight.style.width = '100%'
+      // console.log('click')
+      // anime({
+      //   targets: [
+      //     '.white .header',
+      //     '.white .marquee',
+      //     '.white .offer',
+      //     '.white .privilege',
+      //     '.white .promo',
+      //     '.white .partners',
+      //     '.white .contacts',
+      //   ],
+      //   opacity: [1, 0],
+      //   easing: 'easeInQuad',
+      // })
+      // anime({
+      //   targets: pathRight,
+      //   d: [
+      //     {
+      //       value: [
+      //         getPath(
+      //           svgRight.clientWidth,
+      //           height,
+      //           offset,
+      //           0,
+      //           true,
+      //           0
+      //         ),
+      //         getPath(0, height, svgRight.clientWidth, 0, false, 0),
+      //       ],
+      //     },
+      //   ],
+      //   easing: 'spring(1, 30, 10, 0)',
+      //   duration: 2000,
+      //   complete: () => {
+      //     window.location.href = '/partners?ot=' + $(window).scrollTop()
+      //   },
+      // })
+    }
+
+    pathRight.addEventListener('click', clickedHandler)
+    pathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
+    clipPathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
+
+
+    const mouseLeave = () => {
+      svgRight.removeEventListener('mouseleave', mouseLeave)
 
       anime({
-        targets: [
-          '.white .header',
-          '.white .marquee',
-          '.white .offer',
-          '.white .privilege',
-          '.white .promo',
-          '.white .partners',
-          '.white .contacts',
-        ],
-        opacity: [1, 0],
-        easing: 'easeInQuad',
+        targets: '.arrow-slider',
+        translateX: ['25%', '200%'],
+        easing: 'spring(2, 45, 10, 0)',
+        duration: 100
       })
+
+      anime({
+        targets: '.text',
+        right: ['-30%', '0'],
+        opacity: 1,
+        easing: 'spring(1, 30, 10, 0)',
+        duration: 200
+      })
+
+      anime({
+        targets: [pathRight, clipPathRight],
+        d: [
+          {
+            value: getPath(svgRight.clientWidth - 40, height, offset - 10, 0, false, 100),
+          },
+        ],
+        duration: 250,
+        easing: 'easeInQuad',
+        complete: () => {
+          setTimeout(() => {
+            svgRight.style.width = '50px'
+            pathRight.setAttribute('d', getPath(svgRight.clientWidth - 40, height, offset - 10, 0, false, 100))
+            svgRight.addEventListener('mouseenter', mouseEnter)
+          }, 100)
+        }
+      })
+      
+      pathRight.removeEventListener('mousedown', mouseDown)
+      pathRight.removeEventListener('click', clickedHandler)
+    }
+
+    const mouseEnter = () => {
+      svgRight.removeEventListener('mouseenter', mouseEnter)
+
+      anime({
+        targets: '.text',
+        right: '-30%',
+        opacity: 0,
+        easing: 'spring(1, 30, 10, 0)',
+        duration: 400
+      })
+
+      anime({
+        targets: '.arrow-slider',
+        translateX: ['200%', '25%'],
+        easing: 'spring(2, 40, 20, 5)',
+        delay: 100
+      })
+
+      svgRight.style.width = '100px'
 
       anime({
         targets: pathRight,
         d: [
           {
             value: [
-              getPath(
-                svgRight.clientWidth,
-                height,
-                offset,
-                0,
-                true,
-                0
-              ),
-              getPath(0, height, svgRight.clientWidth, 0, false, 0),
-            ],
-          },
+              getPath(svgRight.clientWidth - 40, height, offset - 10, 0, false, 100),
+              getPath(svgRight.clientWidth - 40, height, offset - 10, 55, false, 100)
+            ]
+          }
         ],
-        easing: 'spring(1, 30, 10, 0)',
-        duration: 2000,
+        easing: 'easeInQuad',
+        duration: 250,
         complete: () => {
-          window.location.href = '/partners'
-        },
+          svgRight.addEventListener('mouseleave', mouseLeave)
+        }
       })
-    }
 
-    pathRight.addEventListener('click', clickedHandler)
-
-    pathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
-
-    clipPathRight.setAttribute('d', getPath(width, height, offset, 0, false, 0))
-
-    const mouseLeave = () => {
-      $('.text').css('right', '0')
-      anime({
-        targets: [pathRight, clipPathRight],
-        d: [
-          {
-            value: getPath(width, height, offset, 0, false, 0),
-          },
-        ],
-        duration: 400,
-        easing: 'easeInQuad',
-      })
-      svgRight.style.width = '50px'
-      pathRight.removeEventListener('mousedown', mouseDown)
-      pathRight.removeEventListener('click', clickedHandler)
-    }
-
-    const mouseEnter = () => {
-      
-      $('.text').css('right', '-100%')
-      let width = svgRight.clientWidth - 20
-      let offset = 10
-      anime({
-        targets: [pathRight, clipPathRight],
-        d: [
-          {
-            value: getPath(width, height, offset, pip, true, 0),
-          },
-        ],
-        duration: 400,
-        easing: 'easeInQuad',
-      })
-      pathRight.addEventListener('mousedown', mouseDown)
-      pathRight.addEventListener('click', clickedHandler)
+      // pathRight.addEventListener('mousedown', mouseDown)
     }
 
     const mouseDown = function (e) {
-      pathRight.removeEventListener('click', clickedHandler)
       svgRight.removeEventListener('mouseleave', mouseLeave)
       svgRight.removeEventListener('mouseenter', mouseEnter)
 
@@ -301,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
             easing: 'spring(1, 30, 10, 0)',
             duration: 2000,
             complete: () => {
-              window.location.href = '/partners'
+              window.location.href = '/partners?ot=' + $(window).scrollTop()
             },
           })
         }
@@ -334,8 +379,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    arrowCircle.addEventListener('click', () => {
+      
+      svgRight.style.width = '100%'
+
+      anime({
+        targets: '.arrow-slider',
+        opacity: [1, 0],
+        easing: 'easeInQuad',
+        duration: 100
+      })
+
+      anime({
+        targets: [
+          '.white .header',
+          '.white .marquee',
+          '.white .offer',
+          '.white .privilege',
+          '.white .promo',
+          '.white .partners',
+          '.white .contacts',
+        ],
+        opacity: [1, 0],
+        easing: 'easeInQuad',
+      })
+      anime({
+        targets: pathRight,
+        d: [
+          {
+            value: [
+              getPath(svgRight.clientWidth - 40, height, offset - 10, 55, false, 100),
+              getPath(0, height, svgRight.clientWidth, 0, false, 100),
+            ],
+          },
+        ],
+        easing: 'spring(1, 30, 10, 0)',
+        duration: 2000,
+        complete: () => {
+          window.location.href = '/partners?ot=' + $(window).scrollTop()
+        },
+      })
+    })
+
     svgRight.addEventListener('mouseenter', mouseEnter)
-    svgRight.addEventListener('mouseleave', mouseLeave)
 
     pathRight.addEventListener('dragstart', () => {
       return false

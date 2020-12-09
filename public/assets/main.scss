@@ -50,12 +50,24 @@ h2 {
 
 @media screen and (max-width: 1440px) {
   .container {
-    padding: 0 40px;
+    padding: 0 40px 0 10px;
+  }
+
+  .darken {
+    .container {
+      padding: 0 10px 0 40px;
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
     padding: 0;
+  }
+
+  .darken {
+    .container {
+      padding: 0;
+    }
   }
 }

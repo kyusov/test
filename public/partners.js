@@ -6,6 +6,8 @@ window.onload = () => {
     direction: 'rtl',
   })
 
+  $(window).scrollTop(window.location.search.replace('?', '').split('=')[1])
+
   anime({
     targets: [
       '.darken .header',

@@ -3,7 +3,7 @@
   opacity: 0;
 
   &__wrapper {
-    max-width: 1240px;
+    max-width: 1000px;
     margin: 97px auto 0 auto;
     display: flex;
     justify-content: space-between;
@@ -13,13 +13,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 65%;
+    width: 55%;
   }
 
   &__right {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 45%;
   }
 
   &__custumers {
@@ -27,15 +27,16 @@
   }
 
   &__title {
-    margin-left: 15%;
     text-transform: uppercase;
-    margin-top: 150px;
     line-height: 56px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 150px;
   }
 
   &__email,
   &__phone {
-    font-size: 72px;
+    font-size: 58px;
     font-weight: 900;
     line-height: 84px;
     color: $color-text;
@@ -220,7 +221,7 @@
   }
 
   &__social {
-    max-width: 1240px;
+    max-width: 1000px;
     margin: 46px auto 0 auto;
     display: flex;
   }
