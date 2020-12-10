@@ -1961,7 +1961,11 @@
 }
 
 .modal .hidden {
-  display: none;
+  opacity: 0;
+}
+
+.modal__backward {
+  background-color: #FDC300;
 }
 
 .modal__overlay {
@@ -1976,25 +1980,11 @@
   opacity: 0;
 }
 
-.modal__wrapper, .modal__back {
+.modal__wrapper {
   position: absolute;
   width: 30%;
-  height: 60%;
-  min-height: 520px;
-  max-height: 600px;
   top: 50%;
   left: 50%;
-}
-
-@media screen and (max-width: 475px) {
-  .modal__wrapper, .modal__back {
-    width: 95%;
-    height: 90%;
-    padding: 40px;
-  }
-}
-
-.modal__wrapper {
   background-color: #fff;
   padding: 50px;
   z-index: 8950;
@@ -2051,55 +2041,9 @@
   }
 }
 
-.modal__back {
-  background-color: #fdc300;
-  z-index: 8940;
-  border: 1px solid #000;
-  border-radius: 10px;
-  opacity: 0;
-  display: none;
-}
-
-@media screen and (max-width: 1440px) {
-  .modal__back {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 998px) {
-  .modal__back {
-    width: 65%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .modal__back {
-    width: 75%;
-  }
-}
-
-@media screen and (max-width: 475px) {
-  .modal__back {
-    width: 95%;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .modal__back {
-    width: 80%;
-    min-height: 400px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .modal__back {
-    width: 90%;
-    min-height: 300px;
-  }
-}
-
 .modal__title-wrapper {
   display: flex;
+  align-items: center;
   position: relative;
 }
 
@@ -2196,6 +2140,8 @@
   font-weight: 900;
   line-height: 38px;
   color: #333;
+  height: 100%;
+  margin: 0 150px 0 auto;
   opacity: 1;
   transition: opacity 0.4s ease;
 }
@@ -2350,15 +2296,7 @@
   }
 }
 
-.modal__button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-  position: relative;
-}
-
-.modal__button-wrapper .button-next,
-.modal__button-wrapper button[type='submit'] {
+.modal__form .btn-submit {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
@@ -2367,16 +2305,20 @@
   border-radius: 40px;
   background-color: #fff;
   outline: none;
-  position: absolute;
+  margin-top: 2rem;
+  position: relative;
 }
 
-.modal__button-wrapper .button-next:hover,
-.modal__button-wrapper button[type='submit']:hover {
+.modal__form .btn-submit-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.modal__form .btn-submit:hover {
   cursor: pointer;
 }
 
-.modal__button-wrapper .button-next::before,
-.modal__button-wrapper button[type='submit']::before {
+.modal__form .btn-submit::before {
   content: '';
   position: absolute;
   z-index: -1;
@@ -2389,32 +2331,27 @@
   border-radius: 40px;
 }
 
-.modal__button-wrapper .button-next:hover,
-.modal__button-wrapper button[type='submit']:hover {
+.modal__form .btn-submit:hover {
   cursor: pointer;
 }
 
-.modal__button-wrapper .button-next:active,
-.modal__button-wrapper button[type='submit']:active {
+.modal__form .btn-submit:active {
   transform: translate(5px, 10px);
   -webkit-transform: translate(5px, 10px);
 }
 
-.modal__button-wrapper .button-next:active::before,
-.modal__button-wrapper button[type='submit']:active::before {
+.modal__form .btn-submit:active::before {
   content: none;
 }
 
 @media screen and (max-width: 884px) {
-  .modal__button-wrapper .button-next,
-  .modal__button-wrapper button[type='submit'] {
+  .modal__form .btn-submit {
     padding: 15px 36px;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .modal__button-wrapper .button-next,
-  .modal__button-wrapper button[type='submit'] {
+  .modal__form .btn-submit {
     font-size: 24px;
     line-height: 28px;
     padding: 20px 48px;
@@ -2423,72 +2360,45 @@
 }
 
 @media screen and (max-width: 375px) {
-  .modal__button-wrapper .button-next,
-  .modal__button-wrapper button[type='submit'] {
+  .modal__form .btn-submit {
     font-size: 18px;
     line-height: 21px;
     padding: 14px 45px;
   }
-  .modal__button-wrapper .button-next::before,
-  .modal__button-wrapper button[type='submit']::before {
+  .modal__form .btn-submit::before {
     top: 4px;
     left: 2px;
   }
-  .modal__button-wrapper .button-next:active,
-  .modal__button-wrapper button[type='submit']:active {
+  .modal__form .btn-submit:active {
     transform: translate(4px, 6px);
     -webkit-transform: translate(4px, 6px);
   }
 }
 
 @media screen and (max-width: 320px) {
-  .modal__button-wrapper .button-next,
-  .modal__button-wrapper button[type='submit'] {
+  .modal__form .btn-submit {
     font-size: 16px;
     line-height: 19px;
     padding: 11px 42px;
   }
-  .modal__button-wrapper .button-next::before,
-  .modal__button-wrapper button[type='submit']::before {
+  .modal__form .btn-submit::before {
     top: 3px;
     left: 1px;
   }
-  .modal__button-wrapper .button-next:active,
-  .modal__button-wrapper button[type='submit']:active {
+  .modal__form .btn-submit:active {
     transform: translate(3px, 5px);
     -webkit-transform: translate(3px, 5px);
   }
 }
 
-.modal__wrapper-city {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.modal .city-map {
+  margin-top: 2rem;
 }
 
 .modal .city-map__map {
   width: 100%;
-  height: 16rem;
+  height: 300px;
   margin-top: 2rem;
-}
-
-@media screen and (max-width: 475px) {
-  .modal .city-map__map {
-    height: 10rem;
-  }
-}
-
-.modal .city-map__title {
-  padding: 0 0 .2rem 0;
-  position: relative;
-}
-
-.modal .city-map__title > span {
-  border-bottom: 1px dotted #333;
-}
-
-.modal .city-map__title > span:hover {
-  cursor: pointer;
 }
 
 .modal .city-map__choose {
@@ -2501,7 +2411,7 @@
 }
 
 .modal .city-map__choose li {
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: #fff;
 }
 
@@ -2510,29 +2420,29 @@
   background-color: #e6e6e6;
 }
 
-.modal__city-search {
+.modal .city-map__city-search {
   position: relative;
 }
 
-.modal .city-search__search {
+.modal .city-map .city-search__search {
   width: 100%;
   font-size: 1rem;
   border-width: 1px;
 }
 
-.modal .search-results {
+.modal .city-map .search-results {
   position: absolute;
   z-index: 2;
   list-style-type: none;
 }
 
-.modal .search-results li {
+.modal .city-map .search-results li {
   font-size: 1rem;
   background-color: #fff;
   padding: 5px 5px;
 }
 
-.modal .search-results li:hover {
+.modal .city-map .search-results li:hover {
   cursor: pointer;
   background-color: #e8e8e8;
 }
@@ -2747,7 +2657,7 @@
 
 .menu__block-row {
   display: flex;
-  margin-top: 70px;
+  margin-top: 130px;
 }
 
 .menu__container, .menu__links {
@@ -2843,7 +2753,7 @@ h2 {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1920px) {
   .container {
     padding: 0 40px 0 10px;
   }

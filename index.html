@@ -239,12 +239,12 @@
         <nav class="menu">
             <div class="menu__overlay"></div>
             <div class="menu__wrapper">
-                <div class="menu__wrapper-close">
+                <!-- <div class="menu__wrapper-close">
                     <div class="menu__close">
                         <span></span>
                         <span></span>
                     </div>
-                </div>
+                </div> -->
                 <div class="menu__block-row">
                     <div class="menu__social">
                         <a href="http://facebook.com">
@@ -273,23 +273,31 @@
         </nav>
 
         <div class="modal">
-            <div class="modal__wrapper">
-                <div class="modal__title-wrapper">
-                    <div class="modal__title">ПРИОБРЕСТИ КАРТУ</div>
-                    <div class="modal__title hidden">МЕСТО ПОЛУЧЕНИЯ</div>
-                    <div class="modal__close">
-                        <span></span>
-                        <span></span>
+            <div class="modal__backward">
+                <div class="modal__wrapper">
+                    <div class="modal__title-wrapper">
+                        <div class="modal__back-arrow">
+                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="25" cy="25" r="23.5" stroke="#333333" stroke-width="3" />
+                                <path
+                                    d="M9.9389 23.9393C9.35312 24.5251 9.35312 25.4749 9.93891 26.0607L19.4848 35.6066C20.0706 36.1924 21.0204 36.1924 21.6062 35.6066C22.192 35.0208 22.192 34.0711 21.6062 33.4853L13.1209 25L21.6062 16.5147C22.192 15.9289 22.192 14.9792 21.6062 14.3934C21.0204 13.8076 20.0706 13.8076 19.4848 14.3934L9.9389 23.9393ZM38.7773 23.5L10.9996 23.5L10.9996 26.5L38.7773 26.5L38.7773 23.5Z"
+                                    fill="#333333" />
+                            </svg>
+                        </div>
+                        <div class="modal__title">ПРИОБРЕСТИ КАРТУ</div>
+                        <div class="modal__close">
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
-                </div>
-                <form action="" class="modal__form">
-                    <input type="text" name="Имя" id="name" placeholder="Имя">
-                    <input type="email" name="Почта" id="email" placeholder="Email">
-                    <input type="tel" name="Телефон" id="tel" placeholder="Номер телефона">
-                    <input type="checkbox" name="Согласие" id="consent_modal">
-                    <label for="consent_modal">Согласие на обработку персональных данных</label>
+                    <form action="" class="modal__form">
+                        <input type="text" name="Имя" id="name" placeholder="Имя">
+                        <input type="email" name="Почта" id="email" placeholder="Email">
+                        <input type="tel" name="Телефон" id="tel" placeholder="Номер телефона">
+                        <input type="checkbox" name="Согласие" id="consent_modal">
+                        <label for="consent_modal">Согласие на обработку персональных данных</label>
 
-                    <div class="modal__wrapper-city hidden">
                         <div class="modal__city-map city-map">
                             <div class="city-map__title">Ваш город: <span class="city-show">Иркутск</span>
                                 <ul class="city-map__choose">
@@ -303,16 +311,14 @@
                                 <ul class="search-results"></ul>
                             </div>
                         </div>
-                        <div class="city-map__map" id="map"></div>
-                    </div>
 
-                    <div class="modal__button-wrapper">
-                        <button class="button-next">Далее</button>
-                        <button class="hidden" type="submit">Заказать</button>
-                    </div>
-                </form>
+                        <!-- <div class="city-map__map" id="map"></div> -->
+                        <div class="btn-submit-wrapper">
+                            <button class="btn-submit" type="submit">Заказать</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="modal__back"></div>
             <div class="modal__overlay"></div>
         </div>
     </div>

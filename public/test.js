@@ -117,12 +117,11 @@ const citiesCoords = [
 ]
 
 window.onload = () => {
-
   // butter.init()
 
   new Marquee('#first-marquee', {
     continuos: true,
-    direction: 'rtl'
+    direction: 'rtl',
   })
 
   $(window).scrollTop(window.location.search.replace('?', '').split('=')[1])
@@ -168,7 +167,6 @@ function fireAnimation(show) {
 }
 
 $(window).scroll(function () {
-
   if (
     ($(this).scrollTop() >
       $('.card-terminal').closest('div').offset().top - 250 &&
@@ -211,36 +209,56 @@ $(window).scroll(function () {
 
 $(document).ready(() => {
   $('.header__menu-btn').on('click', (e) => {
-    if (!lightTheme) {
-      $('.menu__wrapper').css('background-color', '#fff')
-      $('.menu__close').css('background-color', '#333')
-      $('.menu__close span').css('background-color', '#fff')
-      $('.menu__title').css('color', 'rgba(51, 51, 51, 0.3)')
+    if ($('.header__menu-btn').hasClass('close')) {
+      $('.header').css({
+        zIndex: '500',
+      })
 
-      const items = [...document.querySelectorAll('.menu__item')]
-      for (let i = 0; i < items.length; i++) {
-        $(items[i]).css('color', '#333')
-      }
+      $('.header__logo').css('filter', 'none')
+      $('.header__menu-btn')
+        .css({
+          backgroundColor: '#333',
+          border: '1px solid #333',
+          position: 'unset',
+        })
+        .removeClass('close')
+        .text('МЕНЮ')
 
-      const imgs = [...document.querySelectorAll('.menu__social > a')]
-      imgs[0].children[0].setAttribute(
-        'src',
-        'assets/pictures/social/Facebook icon.svg'
-      )
-      imgs[1].children[0].setAttribute(
-        'src',
-        'assets/pictures/social/Instagram icon.svg'
-      )
-      imgs[2].children[0].setAttribute(
-        'src',
-        'assets/pictures/social/VK icon.svg'
-      )
+      $('.header__menu-btn span').each((i, e) => {
+        $(e).remove()
+      })
 
-      $('.menu__email').css('color', '#333')
+      $('body').css('overflow-y', 'unset')
+
+      anime({
+        targets: '.menu__wrapper',
+        opacity: 0,
+        translateX: ['0', '100%'],
+        duration: 1000,
+        easing: 'easeOutExpo',
+        complete: function () {
+          $('.menu__wrapper').css('display', 'none')
+        },
+      })
+
+      anime({
+        targets: '.menu__overlay',
+        opacity: 0,
+        duration: 1000,
+        delay: 500,
+        easing: 'easeOutExpo',
+        complete: function () {
+          $('.menu').css({ display: 'none', opacity: 0 })
+          $('.menu__overlay').css('display', 'none')
+        },
+      })
     } else {
+      if (window.innerWidth < 616) {
+        $('.header__logo').css('opacity', '0')
+      } else {
+        $('.header__logo').css('filter', 'blur(10px)')
+      }
       $('.menu__wrapper').css('background-color', '#333')
-      $('.menu__close').css('background-color', '#fff')
-      $('.menu__close span').css('background-color', '#333')
       $('.menu__title').css('color', 'rgba(255, 255, 255, 0.3)')
 
       const items = [...document.querySelectorAll('.menu__item')]
@@ -263,63 +281,66 @@ $(document).ready(() => {
       )
 
       $('.menu__email').css('color', '#fff')
+
+      $('.header').css({
+        zIndex: '11000',
+      })
+
+      
+      $('.header__menu-btn')
+        .css({
+          backgroundColor: '#fff',
+          border: 'none',
+          position: 'relative',
+        })
+        .addClass('close')
+        .text('')
+        .append(['<span></span>', '<span></span>'])
+
+      $('.header__menu-btn span').each((i, e) => {
+        $(e).css({
+          width: '26px',
+          height: '3px',
+          backgroundColor: '#333',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform:
+            i === 0
+              ? 'translate3d(-50%, -50%, 0) rotate(45deg)'
+              : 'translate3d(-50%, -50%, 0) rotate(-45deg)',
+        })
+      })
+
+      $('.menu').css({ display: 'flex', opacity: 1 })
+      $('.menu__overlay').css('display', 'block')
+
+      $('body').css('overflow-y', 'hidden')
+
+      anime({
+        targets: '.menu__overlay',
+        opacity: 1,
+        duration: 1000,
+        easing: 'easeOutExpo',
+      })
+
+      anime({
+        targets: '.menu__wrapper',
+        opacity: 1,
+        translateX: ['100%', '0'],
+        duration: 1000,
+        delay: 500,
+        easing: 'easeOutExpo',
+        begin: function () {
+          $('.menu__wrapper').css('display', 'block')
+        },
+      })
     }
-
-    $('.menu').css({ display: 'flex', opacity: 1 })
-    $('.menu__overlay').css('display', 'block')
-
-    $('body').css('overflow-y', 'hidden')
-
-    anime({
-      targets: '.menu__overlay',
-      opacity: 1,
-      duration: 1000,
-      easing: 'easeOutExpo',
-    })
-
-    anime({
-      targets: '.menu__wrapper',
-      opacity: 1,
-      translateX: ['100%', '0'],
-      duration: 1000,
-      delay: 500,
-      easing: 'easeOutExpo',
-      begin: function () {
-        $('.menu__wrapper').css('display', 'block')
-      },
-    })
-  })
-
-  $('.menu__wrapper-close').on('click', () => {
-    $('body').css('overflow-y', 'unset')
-
-    anime({
-      targets: '.menu__wrapper',
-      opacity: 0,
-      translateX: ['0', '100%'],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.menu__wrapper').css('display', 'none')
-      },
-    })
-
-    anime({
-      targets: '.menu__overlay',
-      opacity: 0,
-      duration: 1000,
-      delay: 500,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.menu').css({ display: 'none', opacity: 0 })
-        $('.menu__overlay').css('display', 'none')
-      },
-    })
   })
 
   $('.offer__purchase-card').each(function () {
     $(this).on('click', () => {
-
+      $('.modal__back-arrow').css('display', 'none')
       $('.modal').css('display', 'block')
       $('.modal__overlay').css('display', 'block')
       $('.modal__wrapper').css('display', 'block')
@@ -342,15 +363,102 @@ $(document).ready(() => {
         easing: 'easeOutExpo',
       })
 
-      anime({
-        targets: '.modal__back',
-        opacity: 1,
-        translateY: ['100%', 'calc(-50% + 5px)'],
-        translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
-        delay: 500,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
+      // anime({
+      //   targets: '.modal__back',
+      //   opacity: 1,
+      //   translateY: ['100%', 'calc(-50% + 5px)'],
+      //   translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
+      //   delay: 500,
+      //   duration: 1000,
+      //   easing: 'easeOutExpo',
+      // })
+
+      const success = (position) => {
+        position.coords.latitude, position.coords.longitude
+      }
+  
+      const error = () => {
+        console.log('error')
+      }
+  
+      navigator.geolocation.getCurrentPosition(success, error)
+  
+      // $('.modal__button-wrapper button').each(function (index) {
+      //   $(this).toggleClass('hidden')
+      // })
+  
+      // $('.btn-submit').toggleClass('hidden')
+  
+      // $('.modal__title').each(function () {
+      //   $(this).toggleClass('hidden')
+      // })
+  
+      // $('.modal__form input').each(function () {
+      //   $(this).toggleClass('hidden')
+      // })
+  
+      // $('.modal__form label').toggleClass('hidden')
+      // $('.modal__wrapper-city').toggleClass('hidden')
+      // $('.city-search__search').toggleClass('hidden')
+  
+      const searchResults = document.querySelector('.search-results')
+      let s = ''
+      const autocomplite = (val) => {
+        const regex = new RegExp(val, 'gi')
+        const citiesFilter = cities.filter(
+          (e) => e.city === $('.city-show').text()
+        )
+  
+        return citiesFilter.map((e) =>
+          e.fullAddress.match(regex) ? e.fullAddress : null
+        )
+      }
+  
+      document
+        .querySelector('.city-search__search')
+        .addEventListener('input', (e) => {
+          let showResult = []
+  
+          e.data ? (s += e.data) : (s = s.slice(0, s.length - 1))
+  
+          if (s.length !== 0) {
+            searchResults.innerHTML = ''
+            showResult = autocomplite(s)
+  
+            for (let i = 0; i < showResult.length; i++) {
+              if (showResult[i]) {
+                const t = cities.filter((e) => e.fullAddress === showResult[i])[0]
+  
+                searchResults.innerHTML += `<li class="search-results__item" onclick="searchClick(this)" data-id="${
+                  citiesCoords[t.id]
+                }">${showResult[i]}</li>`
+              }
+            }
+          } else {
+            searchResults.innerHTML = ''
+          }
+        })
+  
+      // if (!mapAgain) {
+      //   DG.then(function () {
+      //     map = DG.map('map', {
+      //       center: [52.283436, 104.296835],
+      //       zoom: 17,
+      //       fullscreenControl: false,
+      //       zoomControl: false,
+      //     })
+      //     citiesCoords.map((e) => {
+      //       DG.marker([e.split(',')[0], e.split(',')[1]])
+      //         .on('click', (el) => {
+      //           const idx = citiesCoords.indexOf(
+      //             `${el.latlng.lat},${el.latlng.lng}`
+      //           )
+      //           $('.city-search__search').val(cities[idx].fullAddress)
+      //         })
+      //         .addTo(map)
+      //     })
+      //   })
+      // }
     })
   })
 
@@ -358,22 +466,14 @@ $(document).ready(() => {
     closeModal()
   })
 
-  $('.button-next').on('click', (e) => {
-    e.preventDefault()
-
-    const success = (position) => {
-      position.coords.latitude, position.coords.longitude
-    }
-
-    const error = () => {
-      console.log('error')
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error)
+  $('.modal__back-arrow').on('click', () => {
+    $('.modal__back-arrow').css('display', 'none')
 
     $('.modal__button-wrapper button').each(function (index) {
       $(this).toggleClass('hidden')
     })
+
+    $('.btn-submit').toggleClass('hidden')
 
     $('.modal__title').each(function () {
       $(this).toggleClass('hidden')
@@ -386,6 +486,41 @@ $(document).ready(() => {
     $('.modal__form label').toggleClass('hidden')
     $('.modal__wrapper-city').toggleClass('hidden')
     $('.city-search__search').toggleClass('hidden')
+
+  })
+
+  $('.button-next').on('click', (e) => {
+    e.preventDefault()
+
+    $('.modal__back-arrow').css('display', 'flex')
+
+    const success = (position) => {
+      position.coords.latitude, position.coords.longitude
+    }
+
+    const error = () => {
+      console.log('error')
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error)
+
+    // $('.modal__button-wrapper button').each(function (index) {
+    //   $(this).toggleClass('hidden')
+    // })
+
+    // $('.btn-submit').toggleClass('hidden')
+
+    // $('.modal__title').each(function () {
+    //   $(this).toggleClass('hidden')
+    // })
+
+    // $('.modal__form input').each(function () {
+    //   $(this).toggleClass('hidden')
+    // })
+
+    // $('.modal__form label').toggleClass('hidden')
+    // $('.modal__wrapper-city').toggleClass('hidden')
+    // $('.city-search__search').toggleClass('hidden')
 
     const searchResults = document.querySelector('.search-results')
     let s = ''
@@ -405,9 +540,7 @@ $(document).ready(() => {
       .addEventListener('input', (e) => {
         let showResult = []
 
-        console.log(e)
-
-        e.data ? (s += e.data) : s = s.slice(0, s.length - 1)
+        e.data ? (s += e.data) : (s = s.slice(0, s.length - 1))
 
         if (s.length !== 0) {
           searchResults.innerHTML = ''
@@ -470,14 +603,13 @@ $(document).ready(() => {
 function searchClick(e) {
   $('.city-search__search').val(e.textContent)
   const coords = $(e)[0].dataset.id
-  map.setView([coords.split(',')[0], coords.split(',')[1]], 17)
+  // map.setView([coords.split(',')[0], coords.split(',')[1]], 17)
   $('.search-results li').each((i, el) => {
     $(el).remove()
   })
 }
 
 function closeModal() {
-
   mapAgain = true
 
   $('.modal__button-wrapper button').each(function (index) {
