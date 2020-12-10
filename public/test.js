@@ -341,7 +341,7 @@ $(document).ready(() => {
 
   $('.offer__purchase-card').each(function () {
     $(this).on('click', () => {
-      $('body').css('overflow-y', 'hidden')
+      $('body').css('overflow', 'hidden')
       
       $('.modal__back-arrow').css('display', 'none')
       $('.modal').css('display', 'block')
@@ -417,7 +417,7 @@ $(document).ready(() => {
   })
 
   $('.modal__close').on('click', () => {
-    document.body.style.overflowY = 'unset'
+    document.body.style.overflow = 'unset'
     closeModal()
   })
 
