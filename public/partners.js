@@ -253,7 +253,7 @@ $(document).ready(() => {
   $('.offer__purchase-card').each(function () {
     $(this).on('click', () => {
       // $('.second').marquee('pause')
-
+      $('body').css('overflow-y', 'hidden')
       $('.modal').css('display', 'block')
       $('.modal__overlay').css('display', 'block')
       $('.modal__wrapper').css('display', 'block')
@@ -289,6 +289,7 @@ $(document).ready(() => {
   })
 
   $('.modal__close').on('click', () => {
+    $('body').css('overflow-y', 'unset')
     modalClose()
   })
 

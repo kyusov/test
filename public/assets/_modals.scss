@@ -509,5 +509,10 @@
     &__form input[type='checkbox'] + label::before {
       background-color: #ffffff99;
     }
+
+    &__button-wrapper {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

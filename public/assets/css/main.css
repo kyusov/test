@@ -2485,6 +2485,11 @@
   background-color: #ffffff99;
 }
 
+.darken .modal__button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .menu {
   position: fixed;
   top: 0;

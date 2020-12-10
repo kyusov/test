@@ -210,6 +210,7 @@ $(window).scroll(function () {
 $(document).ready(() => {
   $('.header__menu-btn').on('click', (e) => {
     if ($('.header__menu-btn').hasClass('close')) {
+      
       $('.header').css({
         zIndex: '500',
       })
@@ -340,6 +341,8 @@ $(document).ready(() => {
 
   $('.offer__purchase-card').each(function () {
     $(this).on('click', () => {
+      $('body').css('overflow-y', 'hidden')
+      
       $('.modal__back-arrow').css('display', 'none')
       $('.modal').css('display', 'block')
       $('.modal__overlay').css('display', 'block')
@@ -363,16 +366,6 @@ $(document).ready(() => {
         easing: 'easeOutExpo',
       })
 
-      // anime({
-      //   targets: '.modal__back',
-      //   opacity: 1,
-      //   translateY: ['100%', 'calc(-50% + 5px)'],
-      //   translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
-      //   delay: 500,
-      //   duration: 1000,
-      //   easing: 'easeOutExpo',
-      // })
-
       const success = (position) => {
         position.coords.latitude, position.coords.longitude
       }
@@ -382,24 +375,6 @@ $(document).ready(() => {
       }
   
       navigator.geolocation.getCurrentPosition(success, error)
-  
-      // $('.modal__button-wrapper button').each(function (index) {
-      //   $(this).toggleClass('hidden')
-      // })
-  
-      // $('.btn-submit').toggleClass('hidden')
-  
-      // $('.modal__title').each(function () {
-      //   $(this).toggleClass('hidden')
-      // })
-  
-      // $('.modal__form input').each(function () {
-      //   $(this).toggleClass('hidden')
-      // })
-  
-      // $('.modal__form label').toggleClass('hidden')
-      // $('.modal__wrapper-city').toggleClass('hidden')
-      // $('.city-search__search').toggleClass('hidden')
   
       const searchResults = document.querySelector('.search-results')
       let s = ''
@@ -438,31 +413,11 @@ $(document).ready(() => {
             searchResults.innerHTML = ''
           }
         })
-  
-      // if (!mapAgain) {
-      //   DG.then(function () {
-      //     map = DG.map('map', {
-      //       center: [52.283436, 104.296835],
-      //       zoom: 17,
-      //       fullscreenControl: false,
-      //       zoomControl: false,
-      //     })
-      //     citiesCoords.map((e) => {
-      //       DG.marker([e.split(',')[0], e.split(',')[1]])
-      //         .on('click', (el) => {
-      //           const idx = citiesCoords.indexOf(
-      //             `${el.latlng.lat},${el.latlng.lng}`
-      //           )
-      //           $('.city-search__search').val(cities[idx].fullAddress)
-      //         })
-      //         .addTo(map)
-      //     })
-      //   })
-      // }
     })
   })
 
   $('.modal__close').on('click', () => {
+    document.body.style.overflowY = 'unset'
     closeModal()
   })
 
