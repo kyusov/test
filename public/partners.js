@@ -85,7 +85,6 @@ function basketAnimation() {
       easing: 'easeOutQuart',
       delay: 200,
     })
-
   } else {
     anime({
       targets: '.basket-front',
@@ -171,120 +170,17 @@ $(window).scroll(function () {
 
 $(document).ready(() => {
   $('.header__menu-btn').on('click', (e) => {
-    $('.menu__wrapper').css('background-color', '#fff')
-    $('.menu__close').css('background-color', '#333')
-    $('.menu__close span').css('background-color', '#fff')
-    $('.menu__title').css('color', 'rgba(51, 51, 51, 0.3)')
-
-    const items = [...document.querySelectorAll('.menu__item')]
-    for (let i = 0; i < items.length; i++) {
-      $(items[i]).css('color', '#333')
+    if ($('.header__menu-btn').hasClass('close')) {
+      menuClose()
+    } else {
+      menuOpen()
     }
-
-    const imgs = [...document.querySelectorAll('.menu__social > a')]
-    imgs[0].children[0].setAttribute(
-      'src',
-      'assets/pictures/social/Facebook icon.svg'
-    )
-    imgs[1].children[0].setAttribute(
-      'src',
-      'assets/pictures/social/Instagram icon.svg'
-    )
-    imgs[2].children[0].setAttribute(
-      'src',
-      'assets/pictures/social/VK icon.svg'
-    )
-
-    $('.menu__email').css('color', '#333')
-
-    $('.menu').css({ display: 'flex', opacity: 1 })
-    $('.menu__overlay').css('display', 'block')
-    // $('.first').marquee('pause')
-
-    $('body').css('overflow-y', 'hidden')
-
-    anime({
-      targets: '.menu__overlay',
-      opacity: 1,
-      duration: 1000,
-      easing: 'easeOutExpo',
-    })
-
-    anime({
-      targets: '.menu__wrapper',
-      opacity: 1,
-      translateX: ['100%', '0'],
-      duration: 1000,
-      delay: 500,
-      easing: 'easeOutExpo',
-      begin: function () {
-        $('.menu__wrapper').css('display', 'block')
-      },
-    })
   })
 
-  $('.menu__wrapper-close').on('click', () => {
-    $('body').css('overflow-y', 'unset')
-    // $('.first').marquee('resume')
-    anime({
-      targets: '.menu__wrapper',
-      opacity: 0,
-      translateX: ['0', '100%'],
-      duration: 1000,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.menu__wrapper').css('display', 'none')
-      },
-    })
-
-    anime({
-      targets: '.menu__overlay',
-      opacity: 0,
-      duration: 1000,
-      delay: 500,
-      easing: 'easeOutExpo',
-      complete: function () {
-        $('.menu').css({ display: 'none', opacity: 0 })
-        $('.menu__overlay').css('display', 'none')
-      },
-    })
-  })
-
-  $('.offer__purchase-card').each(function () {
+  $('.offer__partner-card').each(function () {
     $(this).on('click', () => {
       // $('.second').marquee('pause')
-      $('body').css('overflow', 'hidden')
-      $('.modal').css('display', 'block')
-      $('.modal__overlay').css('display', 'block')
-      $('.modal__wrapper').css('display', 'block')
-      $('.modal__back').css('display', 'block')
-
-      anime({
-        targets: '.modal__overlay',
-        opacity: 1,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
-
-      anime({
-        targets: '.modal__wrapper',
-        opacity: 1,
-        translateY: ['100%', '-50%'],
-        translateX: ['-50%', '-50%'],
-        delay: 500,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
-
-      anime({
-        targets: '.modal__back',
-        opacity: 1,
-        translateY: ['100%', 'calc(-50% + 5px)'],
-        translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
-        delay: 500,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
+      modalOpen()
     })
   })
 
@@ -299,42 +195,32 @@ $(document).ready(() => {
     }
   })
 
-  $('.offer__partner-card').each(function () {
-    $(this).on('click', () => {
-      // $('.second').marquee('pause')
+  $('a[href="#buy"]').on('click', () => {
+    menuClose()
+    modalOpen()
+  })
 
-      $('.modal').css('display', 'block')
-      $('.modal__overlay').css('display', 'block')
-      $('.modal__wrapper').css('display', 'block')
-      $('.modal__back').css('display', 'block')
+  $('a[href="#part"]').on('click', () => {
+    menuClose()
+    modalOpen()
+  })
 
-      anime({
-        targets: '.modal__overlay',
-        opacity: 1,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
+  $('a[href="#privilege"]').on('click', () => {
+    menuClose()
+    setTimeout(() => {
+      $('html, body').animate({
+        'scrollTop': $('#priv').offset().top
+      }, 2000)
+    }, 100)
+  })
 
-      anime({
-        targets: '.modal__wrapper',
-        opacity: 1,
-        translateY: ['100%', '-50%'],
-        translateX: ['-50%', '-50%'],
-        delay: 500,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
-
-      anime({
-        targets: '.modal__back',
-        opacity: 1,
-        translateY: ['100%', 'calc(-50% + 5px)'],
-        translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
-        delay: 500,
-        duration: 1000,
-        easing: 'easeOutExpo',
-      })
-    })
+  $('a[href="#contacts"]').on('click', () => {
+    menuClose()
+    setTimeout(() => {
+      $('html, body').animate({
+        'scrollTop': $('#cont').offset().top
+      }, 2000)
+    }, 100)
   })
 })
 
@@ -378,5 +264,174 @@ function modalClose() {
       $('.modal').css('display', 'none')
       $('.modal__overlay').css('display', 'none')
     },
+  })
+}
+
+function menuOpen() {
+  if (window.innerWidth < 616) {
+    $('.header__logo').css('opacity', '0')
+  } else {
+    $('.header__logo').css('filter', 'blur(10px)')
+  }
+
+  $('.menu__wrapper').css('background-color', '#fff')
+  $('.menu__close').css('background-color', '#333')
+  $('.menu__close span').css('background-color', '#fff')
+  $('.menu__title').css('color', 'rgba(51, 51, 51, 0.3)')
+
+  const items = [...document.querySelectorAll('.menu__item')]
+  for (let i = 0; i < items.length; i++) {
+    $(items[i]).css('color', '#333')
+  }
+
+  const imgs = [...document.querySelectorAll('.menu__social > a')]
+  imgs[0].children[0].setAttribute(
+    'src',
+    'assets/pictures/social/Facebook icon.svg'
+  )
+  imgs[1].children[0].setAttribute(
+    'src',
+    'assets/pictures/social/Instagram icon.svg'
+  )
+  imgs[2].children[0].setAttribute('src', 'assets/pictures/social/VK icon.svg')
+
+  $('.menu__email').css('color', '#333')
+
+  $('.menu').css({ display: 'flex', opacity: 1 })
+  $('.menu__overlay').css('display', 'block')
+
+  $('.header').css({
+    zIndex: '11000',
+  })
+
+  $('.header__menu-btn')
+    .css({
+      backgroundColor: '#333',
+      border: 'none',
+      position: 'relative',
+    })
+    .addClass('close')
+    .text('')
+    .append(['<span></span>', '<span></span>'])
+
+  $('.header__menu-btn span').each((i, e) => {
+    $(e).css({
+      width: '26px',
+      height: '3px',
+      backgroundColor: '#fff',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform:
+        i === 0
+          ? 'translate3d(-50%, -50%, 0) rotate(45deg)'
+          : 'translate3d(-50%, -50%, 0) rotate(-45deg)',
+    })
+  })
+
+  $('body').css('overflow-y', 'hidden')
+
+  anime({
+    targets: '.menu__overlay',
+    opacity: 1,
+    duration: 1000,
+    easing: 'easeOutExpo',
+  })
+
+  anime({
+    targets: '.menu__wrapper',
+    opacity: 1,
+    translateX: ['100%', '0'],
+    duration: 1000,
+    delay: 500,
+    easing: 'easeOutExpo',
+    begin: function () {
+      $('.menu__wrapper').css('display', 'block')
+    },
+  })
+}
+
+function menuClose() {
+  $('.header').css({
+    zIndex: '500',
+  })
+
+  if (window.innerWidth < 616) {
+    $('.header__logo').css('opacity', '1')
+  } else {
+    $('.header__logo').css('filter', 'none')
+  }
+
+  $('.header__menu-btn')
+    .css({
+      backgroundColor: '#fff',
+      border: '1px solid #fff',
+      position: 'unset',
+    })
+    .removeClass('close')
+    .text('МЕНЮ')
+
+  $('.header__menu-btn span').each((i, e) => {
+    $(e).remove()
+  })
+
+  $('body').css('overflow-y', 'unset')
+  // $('.first').marquee('resume')
+  anime({
+    targets: '.menu__wrapper',
+    opacity: 0,
+    translateX: ['0', '100%'],
+    duration: 1000,
+    easing: 'easeOutExpo',
+    complete: function () {
+      $('.menu__wrapper').css('display', 'none')
+    },
+  })
+
+  anime({
+    targets: '.menu__overlay',
+    opacity: 0,
+    duration: 1000,
+    delay: 500,
+    easing: 'easeOutExpo',
+    complete: function () {
+      $('.menu').css({ display: 'none', opacity: 0 })
+      $('.menu__overlay').css('display', 'none')
+    },
+  })
+}
+
+function modalOpen() {
+  $('body').css('overflow', 'hidden')
+  $('.modal').css('display', 'block')
+  $('.modal__overlay').css('display', 'block')
+  $('.modal__wrapper').css('display', 'block')
+  $('.modal__back').css('display', 'block')
+
+  anime({
+    targets: '.modal__overlay',
+    opacity: 1,
+    duration: 1000,
+    easing: 'easeOutExpo',
+  })
+
+  anime({
+    targets: '.modal__wrapper',
+    opacity: 1,
+    translateY: ['100%', '-50%'],
+    translateX: ['-50%', '-50%'],
+    delay: 500,
+    duration: 1000,
+    easing: 'easeOutExpo',
+  })
+
+  anime({
+    targets: '.modal__back',
+    opacity: 1,
+    translateY: ['100%', 'calc(-50% + 5px)'],
+    translateX: ['calc(-50% + 5px)', 'calc(-50% + 5px)'],
+    delay: 500,
+    duration: 1000,
+    easing: 'easeOutExpo',
   })
 }

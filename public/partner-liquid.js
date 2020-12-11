@@ -19,20 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
   arrowCircle.style.transform = 'translateY(' + (height / 2 - 120) + 'px) translateX(-200%)'
 
 
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 770) {
     $('.text-dark').css('display', 'none')
     let width = 20
     let offset = 10
-    pathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
-    clipPathLeft.setAttribute('d', getPath(width, height, offset, pip, true, 0))
+    pathLeft.setAttribute('d', getPath(width, height, offset, pip, true, height / 5))
+    clipPathLeft.setAttribute('d', getPath(width, height, offset, pip, true, height / 5))
 
     anime({
       targets: pathLeft,
       d: [
         {
           value: [
-            getPath(width, height, offset, 0, false, 0),
-            getPath(width, height, offset, pip, true, 0),
+            getPath(width, height, offset, 0, false, height / 5),
+            getPath(width, height, offset, pip, true, height / 5),
           ],
         },
       ],
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targets: [pathLeft, clipPathLeft],
         d: [
           {
-            value: getPath(width, height, offset, pip, true, 0),
+            value: getPath(width, height, offset, pip, true, height / 5),
           },
         ],
         duration: 0,
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pathLeft.setAttribute(
         'd',
-        getPath(widthInner, height, offset, 0, false, 0)
+        getPath(widthInner, height, offset, 0, false, height / 5)
       )
     }
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pathLeft.setAttribute(
         'd',
-        getPath(widthInner, height, offset, -x, true, y)
+        getPath(widthInner, height, offset, -x, true, y + height / 5)
       )
 
       if (x >= window.innerWidth - window.innerWidth / 4) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         svgLeft.removeEventListener('touchstart', touchStart)
         svgLeft.removeEventListener('touchend', touchEnd)
 
-        pathLeft.setAttribute('d', getPath(0, height, offset, -x, true, y))
+        pathLeft.setAttribute('d', getPath(0, height, offset, -x, true, y + height / 5))
 
         anime({
           targets: [
@@ -107,14 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
           d: [
             {
               value: [
-                getPath(0, height, offset, -x, true, y),
+                getPath(0, height, offset, -x, true, y + height / 5),
                 getPath(
                   svgLeft.clientWidth,
                   height,
                   svgLeft.clientWidth,
                   0,
                   false,
-                  0
+                  height / 5
                 ),
               ],
             },

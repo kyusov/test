@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   var shiftY
   var widthInner
 
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 770) {
     $('.text').css('display', 'none')
     let width = svgRight.clientWidth - 20
     let offset = 10
-    pathRight.setAttribute('d', getPath(width, height, offset, pip, true, 0))
+    pathRight.setAttribute('d', getPath(width, height, offset, pip, true, height / 5))
     clipPathRight.setAttribute(
       'd',
       getPath(width, height, offset, pip, true, 0)
@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       d: [
         {
           value: [
-            getPath(width, height, offset, 0, false, 0),
-            getPath(width, height, offset, pip, true, 0),
+            getPath(width, height, offset, 0, false, height / 5),
+            getPath(width, height, offset, pip, true, height / 5),
           ],
         },
       ],
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         targets: [pathRight, clipPathRight],
         d: [
           {
-            value: getPath(width, height, offset, pip, true, 0),
+            value: getPath(width, height, offset, pip, true, height / 5),
           },
         ],
         duration: 0,
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pathRight.setAttribute(
         'd',
-        getPath(widthInner, height, offset, 0, false, 0)
+        getPath(widthInner, height, offset, 0, false, height / 5)
       )
     }
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       pathRight.setAttribute(
         'd',
-        getPath(widthInner, height, offset, Math.abs(x), true, y)
+        getPath(widthInner, height, offset, Math.abs(x), true, y + height / 5)
       )
 
       if (Math.abs(x) >= window.innerWidth - window.innerWidth / 4) {
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pathRight.setAttribute(
           'd',
-          getPath(svgRight.clientWidth, height, offset, Math.abs(x), true, y)
+          getPath(svgRight.clientWidth, height, offset, Math.abs(x), true, y + height / 5)
         )
 
         anime({
@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
                   offset,
                   Math.abs(x),
                   true,
-                  y
+                  y + height / 5
                 ),
-                getPath(0, height, svgRight.clientWidth, 0, false, 0),
+                getPath(0, height, svgRight.clientWidth, 0, false, height / 5),
               ],
             },
           ],
@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     svgRight.addEventListener('touchstart', touchStart)
     svgRight.addEventListener('touchend', touchEnd)
   } else {
+
     const clickedHandler = () => {
       // svgRight.style.width = '100%'
       // console.log('click')
