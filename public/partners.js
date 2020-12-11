@@ -1,6 +1,9 @@
 var flag = true
 
 window.onload = () => {
+
+  init(120, 22)
+
   new Marquee('.second', {
     continuos: true,
     direction: 'rtl',

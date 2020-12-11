@@ -117,7 +117,8 @@ const citiesCoords = [
 ]
 
 window.onload = () => {
-  // butter.init()
+  
+  init(120, 22)
 
   new Marquee('#first-marquee', {
     continuos: true,
@@ -372,18 +373,24 @@ $(document).ready(() => {
   $('a[href="#privilege"]').on('click', () => {
     closeMenu()
     setTimeout(() => {
-      $('html, body').animate({
-        'scrollTop': $('#priv').offset().top
-      }, 2000)
+      $('html, body').animate(
+        {
+          scrollTop: $('#priv').offset().top,
+        },
+        2000
+      )
     }, 100)
   })
-  
+
   $('a[href="#contacts"]').on('click', () => {
     closeMenu()
     setTimeout(() => {
-      $('html, body').animate({
-        'scrollTop': $('#cont').offset().top
-      }, 2000)
+      $('html, body').animate(
+        {
+          scrollTop: $('#cont').offset().top,
+        },
+        2000
+      )
     }, 100)
   })
 })
@@ -605,7 +612,6 @@ function searchClick(e) {
 }
 
 function closeModal() {
-
   // $('.modal__button-wrapper button').each(function (index) {
   //   $(this).toggleClass('hidden')
   // })
